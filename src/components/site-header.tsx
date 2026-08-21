@@ -17,11 +17,8 @@ export function SiteHeader() {
           href="/"
           className="flex items-baseline gap-2 no-underline focus-visible:outline-2"
         >
-          <span className="font-display text-[1.35rem] leading-none tracking-tight text-ink">
+          <span className="font-display text-[1.35rem] font-semibold leading-none tracking-tight text-ink">
             {SITE.name}
-          </span>
-          <span className="hidden font-mono text-[0.65rem] uppercase tracking-[0.14em] text-faint sm:inline">
-            public-office record
           </span>
         </Link>
 

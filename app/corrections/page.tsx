@@ -52,8 +52,8 @@ export default function CorrectionsPage() {
         <h2 className="font-display text-lg text-ink">Report a correction</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted">
           Email{" "}
-          <a href="mailto:corrections@lokkosh.example.org" className="text-link">
-            corrections@lokkosh.example.org
+          <a href="mailto:corrections@indian-democracy.example.org" className="text-link">
+            corrections@indian-democracy.example.org
           </a>{" "}
           with the page, the disputed fact, and your supporting source.
           High-risk corrections about named individuals are acknowledged within

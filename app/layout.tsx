@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans, Rozha_One } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Poppins } from "next/font/google";
 import { SiteHeader } from "@/src/components/site-header";
 import { SiteFooter } from "@/src/components/site-footer";
 import { SITE } from "@/src/lib/site";
 import "./globals.css";
 
-const rozha = Rozha_One({
-  variable: "--font-rozha",
-  weight: "400",
+const poppins = Poppins({
+  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -24,7 +24,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://lokkosh.example.org"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://indian-democracy.example.org"),
   title: {
     default: `${SITE.name} · ${SITE.tagline}`,
     template: `%s · ${SITE.name}`,
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${rozha.variable} ${plexSans.variable} ${plexMono.variable}`}
+      className={`${poppins.variable} ${plexSans.variable} ${plexMono.variable}`}
     >
       <body className="min-h-dvh flex flex-col">
         <a href="#main" className="skip-link">

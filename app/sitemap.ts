@@ -9,7 +9,7 @@ import { councilOfMinisters } from "@/src/lib/data/executive";
 import { supremeCourtJudges } from "@/src/lib/data/judiciary";
 import { slugify } from "@/src/lib/format";
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lokkosh.example.org";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://indian-democracy.example.org";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const snapshot = new Date("2026-08-21");

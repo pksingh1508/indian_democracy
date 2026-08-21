@@ -1,5 +1,5 @@
 export const SITE = {
-  name: "Lokkosh",
+  name: "Indian Democracy",
   tagline: "Who serves in India's public offices — and what the official record says",
   description:
     "An independent, non-partisan record of India's democratic institutions: the Union executive, Parliament, the judiciary, and every state and Union Territory, with a dated official source behind each fact.",

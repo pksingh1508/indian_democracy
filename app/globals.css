@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Lokkosh design tokens — "the open record".
+   Indian Democracy design tokens — "the open record".
    Paper-and-ink ground, indelible-violet accent (election ink), ledger rules.
    Party colors appear only as data, never as UI identity.
 --------------------------------------------------------------------------- */
@@ -55,7 +55,7 @@
   --color-leaf: var(--leaf);
   --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
-  --font-display: var(--font-rozha), ui-serif, Georgia, serif;
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
