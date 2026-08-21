@@ -50,11 +50,6 @@ export type {
 
 const VACANT_COLOR = "#a9adb8";
 
-interface QueueEntry {
-  key: string;
-  count: number;
-}
-
 /**
  * Alliance ordering as reported for the 18th Lok Sabha. "SS" is the
  * Election-Commission-recognised Shiv Sena (NDA); "SHSUBT" is the Uddhav
@@ -105,8 +100,6 @@ const OPPOSITION_KEYS = [
   "ASP (KR)",
   "Ind.",
 ];
-
-const VACANT_COLOR = "#a9adb8";
 
 interface FeaturedPlacement {
   id: string;

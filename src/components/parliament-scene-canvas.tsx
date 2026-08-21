@@ -14,7 +14,7 @@ import {
   ROW_RADII,
   type FloorPerson,
   type ParliamentFloor,
-} from "@/src/lib/parliament-floor";
+} from "@/src/lib/parliament-floor-geometry";
 
 /**
  * Full Three.js rendering of the Lok Sabha chamber: a horseshoe of tiered
@@ -366,12 +366,14 @@ function buildChamberScene(
   const deskGeos: THREE.ExtrudeGeometry[] = [];
   for (let row = 0; row < ROW_RADII.length; row++) {
     const r = ROW_RADII[row];
+    const deckY = (row + 1) * STEP_H;
     for (const sign of [-1, 1]) {
       const g = new THREE.ExtrudeGeometry(
         sectorShape(r - 0.36, r - 0.07, GAP_HALF + 0.02, PHI_MAX - PAD + 0.03),
         { depth: 0.06, bevelEnabled: false, curveSegments: 40 },
       );
       g.rotateX(-Math.PI / 2);
+      g.translate(0, deckY + 0.002, 0);
       if (sign > 0) g.scale(-1, 1, 1);
       deskGeos.push(g);
     }
@@ -541,13 +543,13 @@ function buildChamberScene(
   scene.add(emblemRing);
 
   const frame = new THREE.Mesh(geo(new THREE.BoxGeometry(0.74, 0.94, 0.05)), darkWoodMat);
-  frame.position.set(0, 1.98, -1.845);
+  frame.position.set(0, 2.52, -1.845);
   scene.add(frame);
   const portrait = new THREE.Mesh(
     geo(new THREE.PlaneGeometry(0.62, 0.82)),
     mat(new THREE.MeshStandardMaterial({ map: tex(portraitTexture()), roughness: 0.9 })),
   );
-  portrait.position.set(0, 1.98, -1.815);
+  portrait.position.set(0, 2.52, -1.815);
   scene.add(portrait);
 
   for (const fx of [-1.06, 1.06]) {

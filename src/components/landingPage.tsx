@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { HoverInfo } from "@/src/components/parliament-scene-canvas";
-import type { ParliamentFloor } from "@/src/lib/parliament-floor";
+import type { ParliamentFloor } from "@/src/lib/parliament-floor-geometry";
 import { partyColor } from "@/src/lib/parties";
 import { FreshnessBadge } from "@/src/components/badges";
 
