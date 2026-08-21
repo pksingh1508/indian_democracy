@@ -86,6 +86,7 @@ const STAGGER_TAGS = {
   div: motion.div,
   ul: motion.ul,
   ol: motion.ol,
+  dl: motion.dl,
   section: motion.section,
 } as const;
 

@@ -28,7 +28,7 @@ export function SiteHeader() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-muted no-underline hover:text-indelible"
+                  className="relative text-muted no-underline transition-colors duration-200 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-indelible after:transition-transform after:duration-300 after:ease-out hover:text-indelible hover:after:scale-x-100"
                 >
                   {item.label}
                 </Link>
