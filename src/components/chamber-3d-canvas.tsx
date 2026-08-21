@@ -53,7 +53,7 @@ export function Chamber3DCanvas({
     scene.background = null;
 
     const camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 200);
-    const CAM_POS = new THREE.Vector3(0, 7.5, 13);
+    const CAM_POS = new THREE.Vector3(0, 6.5, 11.5);
     const CAM_TARGET = new THREE.Vector3(0, 0, 1.5);
     camera.position.copy(CAM_POS);
 
@@ -63,7 +63,7 @@ export function Chamber3DCanvas({
     scene.add(key);
 
     // Seats as one InstancedMesh.
-    const seatGeometry = new THREE.SphereGeometry(0.14, 20, 14);
+    const seatGeometry = new THREE.SphereGeometry(0.165, 20, 14);
     const seatMaterial = new THREE.MeshStandardMaterial({ roughness: 0.45 });
     const mesh = new THREE.InstancedMesh(seatGeometry, seatMaterial, points.length);
     const matrix = new THREE.Matrix4();
@@ -162,6 +162,10 @@ export function Chamber3DCanvas({
     observer.observe(mount);
 
     renderOnce();
+
+    // Debug handle (dev inspection only).
+    type DebugWindow = Window & typeof globalThis & { __chamberDebug?: unknown };
+    (window as DebugWindow).__chamberDebug = { camera, mesh, scene, renderer };
 
     return () => {
       disposed = true;
