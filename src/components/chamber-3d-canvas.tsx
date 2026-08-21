@@ -163,10 +163,6 @@ export function Chamber3DCanvas({
 
     renderOnce();
 
-    // Debug handle (dev inspection only).
-    type DebugWindow = Window & typeof globalThis & { __chamberDebug?: unknown };
-    (window as DebugWindow).__chamberDebug = { camera, mesh, scene, renderer };
-
     return () => {
       disposed = true;
       observer.disconnect();
