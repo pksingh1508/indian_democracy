@@ -369,12 +369,11 @@ function buildChamberScene(
     const deckY = (row + 1) * STEP_H;
     for (const sign of [-1, 1]) {
       const g = new THREE.ExtrudeGeometry(
-        sectorShape(r - 0.36, r - 0.07, GAP_HALF + 0.02, PHI_MAX - PAD + 0.03),
+        sectorShape(r - 0.36, r - 0.07, sign * (GAP_HALF + 0.02), sign * (PHI_MAX - PAD + 0.03)),
         { depth: 0.06, bevelEnabled: false, curveSegments: 40 },
       );
       g.rotateX(-Math.PI / 2);
       g.translate(0, deckY + 0.002, 0);
-      if (sign > 0) g.scale(-1, 1, 1);
       deskGeos.push(g);
     }
   }
