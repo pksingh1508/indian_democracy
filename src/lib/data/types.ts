@@ -138,7 +138,7 @@ export interface SupremeCourtJudge {
   name: string;
   title: string;
   dateOfBirth: string | null;
-  termOfOffice: string;
+  termOfOffice: string | null;
   chiefJustice: boolean;
 }
 

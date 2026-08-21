@@ -98,7 +98,7 @@ export async function generateMetadata(
       const j = getSupremeCourtJudge(id)!;
       return {
         title: j.title,
-        description: `${j.title}${j.chiefJustice ? ", Chief Justice of India" : ", Judge, Supreme Court of India"}; term ${j.termOfOffice}.`,
+        description: `${j.title}${j.chiefJustice ? ", Chief Justice of India" : ", Judge, Supreme Court of India"}${j.termOfOffice ? `; term ${j.termOfOffice}.` : "."}`,
       };
     }
     case "constitutional":

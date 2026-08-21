@@ -81,7 +81,8 @@ export function formatDdMmYyyy(value: string): string {
 }
 
 /** Format an SC-style term "24-05-2019 to 09-02-2027" with projected-end caveat. */
-export function formatTermOfOffice(term: string): { start: string; end: string } | null {
+export function formatTermOfOffice(term: string | null | undefined): { start: string; end: string } | null {
+  if (!term) return null;
   const parts = term.split(/\s*to\s*/i).map((p) => p.trim()).filter(Boolean);
   if (parts.length !== 2) return null;
   return { start: formatDdMmYyyy(parts[0]), end: formatDdMmYyyy(parts[1]) };
