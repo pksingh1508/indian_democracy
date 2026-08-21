@@ -2,7 +2,12 @@
 
 import { useCallback, useState } from "react";
 import dynamic from "next/dynamic";
-import type { SeatPoint3D } from "@/src/components/chamber-explorer";
+
+export interface SeatPoint3D {
+  x: number;
+  z: number;
+  blockKey: string;
+}
 
 const Chamber3DCanvas = dynamic(
   () => import("@/src/components/chamber-3d-canvas").then((m) => m.Chamber3DCanvas),

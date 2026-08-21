@@ -7,7 +7,6 @@ import { StatusBadge } from "@/src/components/badges";
 import { PartyTag } from "@/src/components/party-tag";
 import {
   getDistrictsByStateCode,
-  getStateByCode,
   states,
 } from "@/src/lib/data/geography";
 import {
@@ -242,12 +241,12 @@ export default async function StatePage(props: PageProps<"/states/[slug]">) {
 
       <aside className="mt-12 rounded-lg border border-dashed border-rule-strong bg-paper p-5 text-sm leading-relaxed text-muted">
         <strong className="text-ink">Not yet in coverage:</strong> this
-        jurisdiction's Governor/Lieutenant Governor, Chief Minister, Council of
+        jurisdiction’s Governor/Lieutenant Governor, Chief Minister, Council of
         Ministers, and legislators require the state-by-state collection that is
         tracked openly on the{" "}
         <Link href="/coverage" className="text-link">coverage report</Link>. The three
         national vacancy records ({lokSabhaVacancies.map((v) => v.constituency).join(", ")})
-        belong to other jurisdictions' Lok Sabha maps and are shown on their
+        belong to other jurisdictions’ Lok Sabha maps and are shown on their
         chamber pages.
       </aside>
     </div>

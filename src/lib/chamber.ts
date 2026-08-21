@@ -1,4 +1,3 @@
-import { partyColor } from "@/src/lib/parties";
 import type { PartyCount } from "@/src/lib/data/parliament";
 
 export interface ChamberBlock {
@@ -59,7 +58,7 @@ interface HemicycleGeometry {
   seatRadius: number;
 }
 
-const GEOMETRY: HemicycleGeometry = { width: 960, height: 480 };
+const GEOMETRY: HemicycleGeometry = { width: 960, height: 480, seatRadius: 6 };
 
 /**
  * Deterministic hemicycle ("chamber-style") layout. Seats are distributed
@@ -75,7 +74,7 @@ export function generateSeats(blocks: ChamberBlock[]): {
   const { width } = GEOMETRY;
 
   if (total === 0) {
-    return { seats: [], geometry: { ...GEOMETRY, height: 240 } };
+    return { seats: [], geometry: { width, height: 240, seatRadius: 6 } };
   }
 
   const rowCount =

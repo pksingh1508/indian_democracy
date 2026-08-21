@@ -67,7 +67,7 @@ export default function CoveragePage() {
         official source work and are deliberately not inferred from the national
         datasets. A directory of every government employee is out of scope by
         policy — see{" "}
-        <span className="font-mono text-xs">{SITE.name}</span>'s methodology for
+        <span className="font-mono text-xs">{SITE.name}</span>’s methodology for
         the reasoning.
       </p>
     </div>

@@ -62,7 +62,7 @@ export default function SourcesPage() {
         then current rosters maintained by the responsible institution, then
         official profiles and press releases. Reputable secondary reporting is
         used only as a lead, never as the sole support for a current-office
-        claim — and never on this site's collected datasets.
+        claim — and never on this site’s collected datasets.
       </p>
     </div>
   );

@@ -61,16 +61,6 @@ function monthName(m: number): string | null {
   return m >= 1 && m <= 12 ? MONTHS[m - 1] : null;
 }
 
-function daySuffix(d: number): string {
-  if (d >= 11 && d <= 13) return "th";
-  switch (d % 10) {
-    case 1: return "st";
-    case 2: return "nd";
-    case 3: return "rd";
-    default: return "th";
-  }
-}
-
 /** ISO yyyy-mm-dd -> "25 July 2022". Returns the input when not parseable. */
 export function formatIsoDate(iso: string): string {
   const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})/);

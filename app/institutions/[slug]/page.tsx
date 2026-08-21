@@ -18,8 +18,6 @@ import {
 } from "@/src/lib/format";
 
 interface ExplainerSection {
-
-interface ExplainerSection {
   heading: string;
   body: string;
 }
@@ -433,7 +431,7 @@ function CoverageGapNotice() {
       <div className="flex items-start gap-4">
         <StatusBadge tone="missing">Not in coverage</StatusBadge>
         <p className="text-sm leading-relaxed text-muted">
-          This institution's current roster is not yet part of the collected
+          This institution’s current roster is not yet part of the collected
           record. Names will appear only when an official, dated source meets
           the standard applied across this site. Follow progress on the{" "}
           <Link href="/coverage" className="text-link">coverage report</Link>.

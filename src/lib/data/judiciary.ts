@@ -7,6 +7,7 @@ import { normalizeStateName } from "@/src/lib/format";
 import type {
   HighCourtBaselineCourt,
   HighCourtJurisdiction,
+  HighCourtJurisdictionsDataset,
   HighCourtJudgesBaselineDataset,
   HighCourtRosterSourcesDataset,
   SupremeCourtDataset,

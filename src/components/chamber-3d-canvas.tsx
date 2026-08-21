@@ -24,7 +24,10 @@ export function Chamber3DCanvas({
 }) {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const selectRef = useRef(onSelect);
-  selectRef.current = onSelect;
+
+  useEffect(() => {
+    selectRef.current = onSelect;
+  }, [onSelect]);
 
   useEffect(() => {
     const mount = mountRef.current;

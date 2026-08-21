@@ -15,9 +15,9 @@ const PRINCIPLES: { title: string; body: React.ReactNode }[] = [
     body: (
       <>
         Every current-office fact on this site comes from an official public
-        service: the Digital Sansad member rosters, the President's and
-        Vice-President's Secretariats, the Prime Minister's Office portfolio
-        notification, the Supreme Court's judge list, the Department of Justice,
+        service: the Digital Sansad member rosters, the President’s and
+        Vice-President’s Secretariats, the Prime Minister’s Office portfolio
+        notification, the Supreme Court’s judge list, the Department of Justice,
         and the Local Government Directory. We do not scrape inside page
         requests; datasets are collected offline, reviewed as a diff in version
         control, then published with a new build.
@@ -40,7 +40,7 @@ const PRINCIPLES: { title: string; body: React.ReactNode }[] = [
       <>
         Office holding changes; identity does not. Records keep their published
         dates — appointment dates, term windows, projected retirements, and
-        portfolio "as-on" dates are shown separately from when we last checked
+        portfolio “as-on” dates are shown separately from when we last checked
         the source.
       </>
     ),
@@ -89,7 +89,7 @@ export default function MethodologyPage() {
       <PageHeader
         eyebrow="How this works"
         title="Methodology"
-        lede={`${SITE.name} republishes dated, source-linked records of who serves in India's public offices. This page explains where the data comes from, how it is checked, and where it stops.`}
+        lede={`${SITE.name} republishes dated, source-linked records of who serves in India’s public offices. This page explains where the data comes from, how it is checked, and where it stops.`}
         meta={
           <span className="font-mono text-xs text-faint">
             Last reviewed {SITE.collectedOn}
