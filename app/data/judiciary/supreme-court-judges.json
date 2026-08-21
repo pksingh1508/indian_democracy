@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataset": "supreme-court-current-judges",
+  "snapshotDate": "2026-08-21",
+  "retrievedAt": "2026-08-21T15:00:44.068Z",
+  "source": {
+    "publisher": "Supreme Court of India",
+    "title": "Chief Justice and Judges",
+    "url": "https://www.sci.gov.in/chief-justice-judges/",
+    "authorityTier": "Tier 1",
+    "notes": "Dates are preserved as displayed by the Court. Retirement dates are projected dates until the term ends."
+  },
+  "court": "Supreme Court of India",
+  "judges": [
+    {
+      "id": "sci-1",
+      "name": "Surya Kant",
+      "title": "Justice Surya Kant",
+      "dateOfBirth": "10-02-1962",
+      "termOfOffice": "24-05-2019 to 09-02-2027",
+      "chiefJustice": true
+    },
+    {
+      "id": "sci-2",
+      "name": "Vikram Nath",
+      "title": "Justice Vikram Nath",
+      "dateOfBirth": null,
+      "termOfOffice": "31-08-2021 to 29-10-2027",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-3",
+      "name": "B.V. Nagarathna",
+      "title": "Justice B.V. Nagarathna",
+      "dateOfBirth": null,
+      "termOfOffice": "31-08-2021 to 20-07-2027",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-4",
+      "name": "M.M. Sundresh",
+      "title": "Justice M.M. Sundresh",
+      "dateOfBirth": null,
+      "termOfOffice": "31-08-2021 to 02-05-2028",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-5",
+      "name": "Pamidighantam Sri Narasimha",
+      "title": "Justice Pamidighantam Sri Narasimha",
+      "dateOfBirth": null,
+      "termOfOffice": "09-05-2022 to 11-08-2030",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-6",
+      "name": "J.B. Pardiwala",
+      "title": "Justice J.B. Pardiwala",
+      "dateOfBirth": null,
+      "termOfOffice": "12-12-2022 to 08-02-2030",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-7",
+      "name": "Dipankar Datta",
+      "title": "Justice Dipankar Datta",
+      "dateOfBirth": null,
+      "termOfOffice": "06-02-2023 to 22-08-2026",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-8",
+      "name": "Sanjay Karol",
+      "title": "Justice Sanjay Karol",
+      "dateOfBirth": null,
+      "termOfOffice": "06-02-2023 to 13-08-2028",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-9",
+      "name": "Sanjay Kumar",
+      "title": "Justice Sanjay Kumar",
+      "dateOfBirth": null,
+      "termOfOffice": "06-02-2023 to 10-05-2028",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-10",
+      "name": "Ahsanuddin Amanullah",
+      "title": "Justice Ahsanuddin Amanullah",
+      "dateOfBirth": null,
+      "termOfOffice": "06-02-2023 to 01-06-2030",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-11",
+      "name": "Manoj Misra",
+      "title": "Justice Manoj Misra",
+      "dateOfBirth": null,
+      "termOfOffice": "13-02-2023 to 13-07-2027",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-12",
+      "name": "Aravind Kumar",
+      "title": "Justice Aravind Kumar",
+      "dateOfBirth": null,
+      "termOfOffice": "19-05-2023 to 28-08-2029",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-13",
+      "name": "Prashant Kumar Mishra",
+      "title": "Justice Prashant Kumar Mishra",
+      "dateOfBirth": null,
+      "termOfOffice": "19-05-2023 to 25-05-2031",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-14",
+      "name": "K.V. Viswanathan",
+      "title": "Justice K.V. Viswanathan",
+      "dateOfBirth": null,
+      "termOfOffice": "14-07-2023 to 01-08-2029",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-15",
+      "name": "Ujjal Bhuyan",
+      "title": "Justice Ujjal Bhuyan",
+      "dateOfBirth": null,
+      "termOfOffice": "14-07-2023 to 05-05-2027",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-16",
+      "name": "Sarasa Venkatanarayana Bhatti",
+      "title": "Justice Sarasa Venkatanarayana Bhatti",
+      "dateOfBirth": null,
+      "termOfOffice": "09-11-2023 to 29-11-2026",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-17",
+      "name": "Satish Chandra Sharma",
+      "title": "Justice Satish Chandra Sharma",
+      "dateOfBirth": null,
+      "termOfOffice": "09-11-2023 to 11-03-2028",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-18",
+      "name": "Augustine George Masih",
+      "title": "Justice Augustine George Masih",
+      "dateOfBirth": null,
+      "termOfOffice": "09-11-2023 to 10-01-2028",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-19",
+      "name": "Sandeep Mehta",
+      "title": "Justice Sandeep Mehta",
+      "dateOfBirth": null,
+      "termOfOffice": "25-01-2024 to 22-06-2027",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-20",
+      "name": "Prasanna Bhalachandra Varale",
+      "title": "Justice Prasanna Bhalachandra Varale",
+      "dateOfBirth": null,
+      "termOfOffice": "18-07-2024 to 29-02-2028",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-21",
+      "name": "N. Kotiswar Singh",
+      "title": "Justice N. Kotiswar Singh",
+      "dateOfBirth": null,
+      "termOfOffice": "18-07-2024 to 09-06-2028",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-22",
+      "name": "R. Mahadevan",
+      "title": "Justice R. Mahadevan",
+      "dateOfBirth": null,
+      "termOfOffice": "05-12-2024 to 16-12-2027",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-23",
+      "name": "Manmohan",
+      "title": "Justice Manmohan",
+      "dateOfBirth": null,
+      "termOfOffice": "16-01-2025 to 24-04-2028",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-24",
+      "name": "K. Vinod Chandran",
+      "title": "Justice K. Vinod Chandran",
+      "dateOfBirth": null,
+      "termOfOffice": "17-03-2025 to 02-10-2031",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-25",
+      "name": "Joymalya Bagchi",
+      "title": "Justice Joymalya Bagchi",
+      "dateOfBirth": null,
+      "termOfOffice": "30-05-2025 to 22-03-2030",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-26",
+      "name": "N.V. Anjaria",
+      "title": "Justice N.V. Anjaria",
+      "dateOfBirth": null,
+      "termOfOffice": "30-05-2025 to 25-03-2029",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-27",
+      "name": "Vijay Bishnoi",
+      "title": "Justice Vijay Bishnoi",
+      "dateOfBirth": null,
+      "termOfOffice": "30-05-2025 to 06-04-2030",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-28",
+      "name": "Atul Sharachchandra Chandurkar",
+      "title": "Justice Atul Sharachchandra Chandurkar",
+      "dateOfBirth": null,
+      "termOfOffice": "29-08-2025 to 12-04-2029",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-29",
+      "name": "Alok Aradhe",
+      "title": "Justice Alok Aradhe",
+      "dateOfBirth": null,
+      "termOfOffice": "29-08-2025 to 27-05-2033",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-30",
+      "name": "Vipul Manubhai Pancholi",
+      "title": "Justice Vipul Manubhai Pancholi",
+      "dateOfBirth": null,
+      "termOfOffice": "02-06-2026 to 31-12-2029",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-31",
+      "name": "Sheel Nagu",
+      "title": "Justice Sheel Nagu",
+      "dateOfBirth": null,
+      "termOfOffice": "02-06-2026 to 24-05-2030",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-32",
+      "name": "Shree Chandrashekhar",
+      "title": "Justice Shree Chandrashekhar",
+      "dateOfBirth": null,
+      "termOfOffice": "02-06-2026 to 25-12-2029",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-33",
+      "name": "Sanjeev Sachdeva",
+      "title": "Justice Sanjeev Sachdeva",
+      "dateOfBirth": null,
+      "termOfOffice": "02-06-2026 to 17-09-2029",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-34",
+      "name": "Arun Palli",
+      "title": "Justice Arun Palli",
+      "dateOfBirth": null,
+      "termOfOffice": "02-06-2026 to 26-06-2031",
+      "chiefJustice": false
+    },
+    {
+      "id": "sci-35",
+      "name": "V. Mohana",
+      "title": "Justice V. Mohana",
+      "dateOfBirth": null,
+      "termOfOffice": null,
+      "chiefJustice": false
+    }
+  ]
+}

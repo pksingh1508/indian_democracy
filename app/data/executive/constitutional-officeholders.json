@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataset": "national-constitutional-officeholders",
+  "snapshotDate": "2026-08-21",
+  "retrievedAt": "2026-08-21T00:00:00+05:30",
+  "sourcePolicy": "Current office claims use the responsible institution's current profile/home page. Appointment or oath dates are included only when stated on that official page.",
+  "officeholders": [
+    {
+      "id": "president-of-india",
+      "office": "President of India",
+      "name": "Droupadi Murmu",
+      "ordinal": 15,
+      "termStart": "2022-07-25",
+      "selectionMethod": "Indirect election by the electoral college specified by the Constitution",
+      "source": {
+        "publisher": "President's Secretariat",
+        "url": "https://presidentofindia.gov.in/about-us",
+        "profileUrl": "https://www.presidentofindia.gov.in/president-india-smt-droupadi-murmu",
+        "pageLastUpdated": "2026-08-21",
+        "authorityTier": "Tier 1"
+      }
+    },
+    {
+      "id": "vice-president-of-india",
+      "office": "Vice-President of India",
+      "name": "C. P. Radhakrishnan",
+      "ordinal": 15,
+      "selectionMethod": "Indirect election by members of both Houses of Parliament",
+      "source": {
+        "publisher": "Vice-President's Secretariat",
+        "url": "https://vicepresidentofindia.nic.in/",
+        "profileUrl": "https://vicepresidentofindia.nic.in/profile",
+        "authorityTier": "Tier 1",
+        "notes": "The official home page identifies Shri C. P. Radhakrishnan as the current Vice-President."
+      }
+    },
+    {
+      "id": "prime-minister-of-india",
+      "office": "Prime Minister of India",
+      "name": "Narendra Modi",
+      "source": {
+        "publisher": "Prime Minister's Office",
+        "url": "https://www.pmindia.gov.in/en/news_updates/portfolios-of-the-union-council-of-ministers-2/",
+        "authorityTier": "Tier 2",
+        "notes": "The current PM and portfolio relationship are also represented in union-council-of-ministers.json."
+      }
+    }
+  ]
+}

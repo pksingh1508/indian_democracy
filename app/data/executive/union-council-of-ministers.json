@@ -1,0 +1,685 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataset": "union-council-of-ministers",
+  "snapshotDate": "2026-08-21",
+  "retrievedAt": "2026-08-21T15:00:44.068Z",
+  "source": {
+    "publisher": "Prime Minister's Office, Government of India",
+    "title": "Portfolios of the Union Council of Ministers",
+    "url": "https://www.pmindia.gov.in/en/news_updates/portfolios-of-the-union-council-of-ministers-2/",
+    "authorityTier": "Tier 2",
+    "publisherAsOn": "25.07.2026",
+    "notes": "Portfolio relationships are dated to the PMO's stated as-on date and stored separately from person identity."
+  },
+  "ministers": [
+    {
+      "id": "union-prime-minister",
+      "name": "Shri Narendra Modi",
+      "nameWithoutHonorific": "Narendra Modi",
+      "category": "Prime Minister",
+      "portfolios": [
+        "Prime Minister and also in-charge of:",
+        "Ministry of Personnel, Public Grievances and Pensions",
+        "Department of Atomic Energy",
+        "Department of Space",
+        "All important policy issues; and",
+        "All other portfolios not allocated to any Minister"
+      ]
+    },
+    {
+      "id": "union-minister-2",
+      "name": "Shri Raj Nath Singh",
+      "nameWithoutHonorific": "Raj Nath Singh",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Defence"
+      ]
+    },
+    {
+      "id": "union-minister-3",
+      "name": "Shri Amit Shah",
+      "nameWithoutHonorific": "Amit Shah",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Home Affairs; and",
+        "Minister of Cooperation"
+      ]
+    },
+    {
+      "id": "union-minister-4",
+      "name": "Shri Nitin Jairam Gadkari",
+      "nameWithoutHonorific": "Nitin Jairam Gadkari",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Road Transport and Highways"
+      ]
+    },
+    {
+      "id": "union-minister-5",
+      "name": "Shri Jagat Prakash Nadda",
+      "nameWithoutHonorific": "Jagat Prakash Nadda",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Health and Family Welfare; and",
+        "Minister of Chemicals and Fertilizers"
+      ]
+    },
+    {
+      "id": "union-minister-6",
+      "name": "Shri Shivraj Singh Chouhan",
+      "nameWithoutHonorific": "Shivraj Singh Chouhan",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Agriculture and Farmers Welfare; and",
+        "Minister of Rural Development"
+      ]
+    },
+    {
+      "id": "union-minister-7",
+      "name": "Smt. Nirmala Sitharaman",
+      "nameWithoutHonorific": "Nirmala Sitharaman",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Finance; and",
+        "Minister of Corporate Affairs"
+      ]
+    },
+    {
+      "id": "union-minister-8",
+      "name": "Dr. Subrahmanyam Jaishankar",
+      "nameWithoutHonorific": "Subrahmanyam Jaishankar",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of External Affairs"
+      ]
+    },
+    {
+      "id": "union-minister-9",
+      "name": "Shri Manohar Lal",
+      "nameWithoutHonorific": "Manohar Lal",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Housing and Urban Affairs; and",
+        "Minister of Power"
+      ]
+    },
+    {
+      "id": "union-minister-10",
+      "name": "Shri H. D. Kumaraswamy",
+      "nameWithoutHonorific": "H. D. Kumaraswamy",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Heavy Industries; and",
+        "Minister of Steel"
+      ]
+    },
+    {
+      "id": "union-minister-11",
+      "name": "Shri Piyush Goyal",
+      "nameWithoutHonorific": "Piyush Goyal",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Commerce and Industry"
+      ]
+    },
+    {
+      "id": "union-minister-12",
+      "name": "Shri Jitan Ram Manjhi",
+      "nameWithoutHonorific": "Jitan Ram Manjhi",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Micro, Small and Medium Enterprises"
+      ]
+    },
+    {
+      "id": "union-minister-13",
+      "name": "Shri Rajiv Ranjan Singh alias Lalan Singh",
+      "nameWithoutHonorific": "Rajiv Ranjan Singh alias Lalan Singh",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Panchayati Raj; and",
+        "Minister of Fisheries, Animal Husbandry and Dairying"
+      ]
+    },
+    {
+      "id": "union-minister-14",
+      "name": "Shri Sarbananda Sonowal",
+      "nameWithoutHonorific": "Sarbananda Sonowal",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Ports, Shipping and Waterways"
+      ]
+    },
+    {
+      "id": "union-minister-15",
+      "name": "Dr. Virendra Kumar",
+      "nameWithoutHonorific": "Virendra Kumar",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Social Justice and Empowerment"
+      ]
+    },
+    {
+      "id": "union-minister-16",
+      "name": "Shri Kinjarapu Rammohan Naidu",
+      "nameWithoutHonorific": "Kinjarapu Rammohan Naidu",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Civil Aviation"
+      ]
+    },
+    {
+      "id": "union-minister-17",
+      "name": "Shri Pralhad Joshi",
+      "nameWithoutHonorific": "Pralhad Joshi",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Consumer Affairs, Food and Public Distribution; and",
+        "Minister of New and Renewable Energy;and",
+        "Minister of Education"
+      ]
+    },
+    {
+      "id": "union-minister-18",
+      "name": "Shri Jual Oram",
+      "nameWithoutHonorific": "Jual Oram",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Tribal Affairs"
+      ]
+    },
+    {
+      "id": "union-minister-19",
+      "name": "Shri Giriraj Singh",
+      "nameWithoutHonorific": "Giriraj Singh",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Textiles"
+      ]
+    },
+    {
+      "id": "union-minister-20",
+      "name": "Shri Ashwini Vaishnaw",
+      "nameWithoutHonorific": "Ashwini Vaishnaw",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Railways",
+        "Minister of Information and Broadcasting; and",
+        "Minister of Electronics and Information Technology"
+      ]
+    },
+    {
+      "id": "union-minister-21",
+      "name": "Shri Jyotiraditya M. Scindia",
+      "nameWithoutHonorific": "Jyotiraditya M. Scindia",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Communications; and",
+        "Minister of Development of North Eastern Region"
+      ]
+    },
+    {
+      "id": "union-minister-22",
+      "name": "Shri Bhupender Yadav",
+      "nameWithoutHonorific": "Bhupender Yadav",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Environment, Forest and Climate Change"
+      ]
+    },
+    {
+      "id": "union-minister-23",
+      "name": "Shri Gajendra Singh Shekhawat",
+      "nameWithoutHonorific": "Gajendra Singh Shekhawat",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Culture; and",
+        "Minister of Tourism"
+      ]
+    },
+    {
+      "id": "union-minister-24",
+      "name": "Smt. Annpurna Devi",
+      "nameWithoutHonorific": "Annpurna Devi",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Women and Child Development"
+      ]
+    },
+    {
+      "id": "union-minister-25",
+      "name": "Shri Kiren Rijiju",
+      "nameWithoutHonorific": "Kiren Rijiju",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Parliamentary Affairs; and",
+        "Minister of Minority Affairs"
+      ]
+    },
+    {
+      "id": "union-minister-26",
+      "name": "Shri Hardeep Singh Puri",
+      "nameWithoutHonorific": "Hardeep Singh Puri",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Petroleum and Natural Gas"
+      ]
+    },
+    {
+      "id": "union-minister-27",
+      "name": "Dr. Mansukh Mandaviya",
+      "nameWithoutHonorific": "Mansukh Mandaviya",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Labour and Employment; and",
+        "Minister of Youth Affairs and Sports"
+      ]
+    },
+    {
+      "id": "union-minister-28",
+      "name": "Shri G. Kishan Reddy",
+      "nameWithoutHonorific": "G. Kishan Reddy",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Coal; and",
+        "Minister of Mines"
+      ]
+    },
+    {
+      "id": "union-minister-29",
+      "name": "Shri Chirag Paswan",
+      "nameWithoutHonorific": "Chirag Paswan",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Food Processing Industries"
+      ]
+    },
+    {
+      "id": "union-minister-30",
+      "name": "Shri C R Patil",
+      "nameWithoutHonorific": "C R Patil",
+      "category": "Cabinet Ministers",
+      "portfolios": [
+        "Minister of Jal Shakti"
+      ]
+    },
+    {
+      "id": "union-minister-31",
+      "name": "Rao Inderjit Singh",
+      "nameWithoutHonorific": "Inderjit Singh",
+      "category": "Ministers of State (Independent Charge)",
+      "portfolios": [
+        "Minister of State (Independent Charge) of the Ministry of Statistics and Programme Implementation",
+        "Minister of State (Independent Charge) of the Ministry of Planning; and",
+        "Minister of State in the Ministry of Culture"
+      ]
+    },
+    {
+      "id": "union-minister-32",
+      "name": "Dr. Jitendra Singh",
+      "nameWithoutHonorific": "Jitendra Singh",
+      "category": "Ministers of State (Independent Charge)",
+      "portfolios": [
+        "Minister of State (Independent Charge) of the Ministry of Science and Technology",
+        "Minister of State (Independent Charge) of the Ministry of Earth Sciences",
+        "Minister of State in the Prime Minister&rsquo;s Office",
+        "Minister of State in the Ministry of Personnel, Public Grievances and Pensions",
+        "Minister of State in the Department of Atomic Energy; and",
+        "Minister of State in the Department of Space"
+      ]
+    },
+    {
+      "id": "union-minister-33",
+      "name": "Shri Arjun Ram Meghwal",
+      "nameWithoutHonorific": "Arjun Ram Meghwal",
+      "category": "Ministers of State (Independent Charge)",
+      "portfolios": [
+        "Minister of State (Independent Charge) of the Ministry of Law and Justice; and",
+        "Minister of State in the Ministry of Parliamentary Affairs"
+      ]
+    },
+    {
+      "id": "union-minister-34",
+      "name": "Shri Prataprao Jadhav",
+      "nameWithoutHonorific": "Prataprao Jadhav",
+      "category": "Ministers of State (Independent Charge)",
+      "portfolios": [
+        "Minister of State (Independent Charge) of the Ministry of Ayush; and",
+        "Minister of State in the Ministry of Health and Family Welfare"
+      ]
+    },
+    {
+      "id": "union-minister-35",
+      "name": "Shri Jayant Chaudhary",
+      "nameWithoutHonorific": "Jayant Chaudhary",
+      "category": "Ministers of State (Independent Charge)",
+      "portfolios": [
+        "Minister of State (Independent Charge) of the Ministry of Skill Development and Entrepreneurship; and",
+        "Minister of State in the Ministry of Education"
+      ]
+    },
+    {
+      "id": "union-minister-36",
+      "name": "Shri Jitin Prasada",
+      "nameWithoutHonorific": "Jitin Prasada",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Commerce and Industry; and",
+        "Minister of State in the Ministry of Electronics and Information Technology"
+      ]
+    },
+    {
+      "id": "union-minister-37",
+      "name": "Shri Shripad Yesso Naik",
+      "nameWithoutHonorific": "Shripad Yesso Naik",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Power; and",
+        "Minister of State in the Ministry of New and Renewable Energy"
+      ]
+    },
+    {
+      "id": "union-minister-38",
+      "name": "Shri Pankaj Chaudhary",
+      "nameWithoutHonorific": "Pankaj Chaudhary",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Finance"
+      ]
+    },
+    {
+      "id": "union-minister-39",
+      "name": "Shri Krishan Pal",
+      "nameWithoutHonorific": "Krishan Pal",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Cooperation"
+      ]
+    },
+    {
+      "id": "union-minister-40",
+      "name": "Shri Ramdas Athawale",
+      "nameWithoutHonorific": "Ramdas Athawale",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Social Justice and Empowerment"
+      ]
+    },
+    {
+      "id": "union-minister-41",
+      "name": "Shri Ram Nath Thakur",
+      "nameWithoutHonorific": "Ram Nath Thakur",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Agriculture and Farmers Welfare"
+      ]
+    },
+    {
+      "id": "union-minister-42",
+      "name": "Shri Nityanand Rai",
+      "nameWithoutHonorific": "Nityanand Rai",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Home Affairs"
+      ]
+    },
+    {
+      "id": "union-minister-43",
+      "name": "Smt. Anupriya Patel",
+      "nameWithoutHonorific": "Anupriya Patel",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Health and Family Welfare; and",
+        "Minister of State in the Ministry of Chemicals and Fertilizers"
+      ]
+    },
+    {
+      "id": "union-minister-44",
+      "name": "Shri V. Somanna",
+      "nameWithoutHonorific": "V. Somanna",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Jal Shakti; and",
+        "Minister of State in the Ministry of Railways"
+      ]
+    },
+    {
+      "id": "union-minister-45",
+      "name": "Dr. Chandra Sekhar Pemmasani",
+      "nameWithoutHonorific": "Chandra Sekhar Pemmasani",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Rural Development; and",
+        "Minister of State in the Ministry of Communications"
+      ]
+    },
+    {
+      "id": "union-minister-46",
+      "name": "Prof. S. P. Singh Baghel",
+      "nameWithoutHonorific": "S. P. Singh Baghel",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Fisheries, Animal Husbandry and Dairying; and",
+        "Minister of State in the Ministry of Panchayati Raj"
+      ]
+    },
+    {
+      "id": "union-minister-47",
+      "name": "Sushri Shobha Karandlaje",
+      "nameWithoutHonorific": "Sushri Shobha Karandlaje",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Micro, Small and Medium Enterprises; and",
+        "Minister of State in the Ministry of Labour and Employment"
+      ]
+    },
+    {
+      "id": "union-minister-48",
+      "name": "Shri Kirtivardhan Singh",
+      "nameWithoutHonorific": "Kirtivardhan Singh",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Environment, Forest and Climate Change; and",
+        "Minister of State in the Ministry of External Affairs"
+      ]
+    },
+    {
+      "id": "union-minister-49",
+      "name": "Shri B. L. Verma",
+      "nameWithoutHonorific": "B. L. Verma",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Consumer Affairs, Food and Public Distribution; and",
+        "Minister of State in the Ministry of Social Justice and Empowerment"
+      ]
+    },
+    {
+      "id": "union-minister-50",
+      "name": "Shri Shantanu Thakur",
+      "nameWithoutHonorific": "Shantanu Thakur",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Ports, Shipping and Waterways"
+      ]
+    },
+    {
+      "id": "union-minister-51",
+      "name": "Shri Suresh Gopi",
+      "nameWithoutHonorific": "Suresh Gopi",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Petroleum and Natural Gas; and",
+        "Minister of State in the Ministry of Tourism"
+      ]
+    },
+    {
+      "id": "union-minister-52",
+      "name": "Dr. L. Murugan",
+      "nameWithoutHonorific": "L. Murugan",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Information and Broadcasting; and",
+        "Minister of State in the Ministry of Parliamentary Affairs"
+      ]
+    },
+    {
+      "id": "union-minister-53",
+      "name": "Shri Ajay Tamta",
+      "nameWithoutHonorific": "Ajay Tamta",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Road Transport and Highways"
+      ]
+    },
+    {
+      "id": "union-minister-54",
+      "name": "Shri Bandi Sanjay Kumar",
+      "nameWithoutHonorific": "Bandi Sanjay Kumar",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Home Affairs"
+      ]
+    },
+    {
+      "id": "union-minister-55",
+      "name": "Shri Kamlesh Paswan",
+      "nameWithoutHonorific": "Kamlesh Paswan",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Rural Development"
+      ]
+    },
+    {
+      "id": "union-minister-56",
+      "name": "Shri Bhagirath Choudhary",
+      "nameWithoutHonorific": "Bhagirath Choudhary",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Agriculture and Farmers Welfare"
+      ]
+    },
+    {
+      "id": "union-minister-57",
+      "name": "Shri Satish Chandra Dubey",
+      "nameWithoutHonorific": "Satish Chandra Dubey",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Coal; and",
+        "Minister of State in the Ministry of Mines"
+      ]
+    },
+    {
+      "id": "union-minister-58",
+      "name": "Shri Sanjay Seth",
+      "nameWithoutHonorific": "Sanjay Seth",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Defence"
+      ]
+    },
+    {
+      "id": "union-minister-59",
+      "name": "Shri Durgadas Uikey",
+      "nameWithoutHonorific": "Durgadas Uikey",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Tribal Affairs"
+      ]
+    },
+    {
+      "id": "union-minister-60",
+      "name": "Smt. Raksha Nikhil Khadse",
+      "nameWithoutHonorific": "Raksha Nikhil Khadse",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Youth Affairs and Sports"
+      ]
+    },
+    {
+      "id": "union-minister-61",
+      "name": "Shri Sukanta Majumdar",
+      "nameWithoutHonorific": "Sukanta Majumdar",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Education; and",
+        "Minister of State in the Ministry of Development of North Eastern Region"
+      ]
+    },
+    {
+      "id": "union-minister-62",
+      "name": "Smt. Savitri Thakur",
+      "nameWithoutHonorific": "Savitri Thakur",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Women and Child Development"
+      ]
+    },
+    {
+      "id": "union-minister-63",
+      "name": "Shri Tokhan Sahu",
+      "nameWithoutHonorific": "Tokhan Sahu",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Housing and Urban Affairs"
+      ]
+    },
+    {
+      "id": "union-minister-64",
+      "name": "Shri Raj Bhushan Choudhary",
+      "nameWithoutHonorific": "Raj Bhushan Choudhary",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Jal Shakti"
+      ]
+    },
+    {
+      "id": "union-minister-65",
+      "name": "Shri Bhupathi Raju Srinivasa Varma",
+      "nameWithoutHonorific": "Bhupathi Raju Srinivasa Varma",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Heavy Industries; and",
+        "Minister of State in the Ministry of Steel"
+      ]
+    },
+    {
+      "id": "union-minister-66",
+      "name": "Shri Harsh Malhotra",
+      "nameWithoutHonorific": "Harsh Malhotra",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Corporate Affairs; and",
+        "Minister of State in the Ministry of Road Transport and Highways"
+      ]
+    },
+    {
+      "id": "union-minister-67",
+      "name": "Smt. Nimuben Jayantibhai Bambhaniya",
+      "nameWithoutHonorific": "Nimuben Jayantibhai Bambhaniya",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Consumer Affairs, Food and Public Distribution"
+      ]
+    },
+    {
+      "id": "union-minister-68",
+      "name": "Shri Murlidhar Mohol",
+      "nameWithoutHonorific": "Murlidhar Mohol",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of Cooperation; and",
+        "Minister of State in the Ministry of Civil Aviation"
+      ]
+    },
+    {
+      "id": "union-minister-69",
+      "name": "Shri Pabitra Margherita",
+      "nameWithoutHonorific": "Pabitra Margherita",
+      "category": "Ministers of State",
+      "portfolios": [
+        "Minister of State in the Ministry of External Affairs; and",
+        "Minister of State in the Ministry of Textiles"
+      ]
+    }
+  ]
+}
