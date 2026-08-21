@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataset": "india-high-court-jurisdictions",
+  "snapshotDate": "2026-08-21",
+  "retrievedAt": "2026-08-21T00:00:00+05:30",
+  "source": {
+    "publisher": "Supreme Court of India / eCommittee",
+    "title": "Jurisdiction and Seat of High Courts; e-Courts High Courts directory",
+    "urls": [
+      "https://www.sci.gov.in/jurisdiction/",
+      "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts"
+    ],
+    "authorityTier": "Tier 1",
+    "notes": "India has 25 High Courts. Shared jurisdictions and Union Territory coverage are preserved explicitly."
+  },
+  "highCourts": [
+    { "id": "allahabad", "name": "Allahabad High Court", "statesOrUnionTerritories": ["Uttar Pradesh"], "principalSeat": "Prayagraj", "benches": ["Lucknow"], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "andhra-pradesh", "name": "Andhra Pradesh High Court", "statesOrUnionTerritories": ["Andhra Pradesh"], "principalSeat": "Amaravati", "benches": [], "officialDirectory": "https://aphc.gov.in/profiles.php" },
+    { "id": "bombay", "name": "Bombay High Court", "statesOrUnionTerritories": ["Maharashtra", "Goa", "Dadra and Nagar Haveli and Daman and Diu"], "principalSeat": "Mumbai", "benches": ["Panaji", "Aurangabad", "Nagpur"], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "calcutta", "name": "Calcutta High Court", "statesOrUnionTerritories": ["West Bengal", "Andaman and Nicobar Islands"], "principalSeat": "Kolkata", "benches": ["Port Blair", "Jalpaiguri"], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "chhattisgarh", "name": "Chhattisgarh High Court", "statesOrUnionTerritories": ["Chhattisgarh"], "principalSeat": "Bilaspur", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "delhi", "name": "Delhi High Court", "statesOrUnionTerritories": ["Delhi"], "principalSeat": "New Delhi", "benches": [], "officialDirectory": "https://delhihighcourt.nic.in/web/judges/current" },
+    { "id": "gauhati", "name": "Gauhati High Court", "statesOrUnionTerritories": ["Assam", "Nagaland", "Mizoram", "Arunachal Pradesh"], "principalSeat": "Guwahati", "benches": ["Kohima", "Aizawl", "Itanagar"], "officialDirectory": "https://ghconline.gov.in/index.php/honble-the-chief-justice-sitting-judges/" },
+    { "id": "gujarat", "name": "Gujarat High Court", "statesOrUnionTerritories": ["Gujarat"], "principalSeat": "Ahmedabad", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "himachal-pradesh", "name": "Himachal Pradesh High Court", "statesOrUnionTerritories": ["Himachal Pradesh"], "principalSeat": "Shimla", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "jammu-kashmir-ladakh", "name": "Jammu and Kashmir and Ladakh High Court", "statesOrUnionTerritories": ["Jammu and Kashmir", "Ladakh"], "principalSeat": "Jammu and Srinagar", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "jharkhand", "name": "Jharkhand High Court", "statesOrUnionTerritories": ["Jharkhand"], "principalSeat": "Ranchi", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "karnataka", "name": "Karnataka High Court", "statesOrUnionTerritories": ["Karnataka"], "principalSeat": "Bengaluru", "benches": ["Dharwad", "Kalaburagi"], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "kerala", "name": "Kerala High Court", "statesOrUnionTerritories": ["Kerala", "Lakshadweep"], "principalSeat": "Kochi", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "madhya-pradesh", "name": "Madhya Pradesh High Court", "statesOrUnionTerritories": ["Madhya Pradesh"], "principalSeat": "Jabalpur", "benches": ["Gwalior", "Indore"], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "madras", "name": "Madras High Court", "statesOrUnionTerritories": ["Tamil Nadu", "Puducherry"], "principalSeat": "Chennai", "benches": ["Madurai"], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "manipur", "name": "Manipur High Court", "statesOrUnionTerritories": ["Manipur"], "principalSeat": "Imphal", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "meghalaya", "name": "Meghalaya High Court", "statesOrUnionTerritories": ["Meghalaya"], "principalSeat": "Shillong", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "orissa", "name": "Orissa High Court", "statesOrUnionTerritories": ["Odisha"], "principalSeat": "Cuttack", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "patna", "name": "Patna High Court", "statesOrUnionTerritories": ["Bihar"], "principalSeat": "Patna", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "punjab-haryana", "name": "Punjab and Haryana High Court", "statesOrUnionTerritories": ["Punjab", "Haryana", "Chandigarh"], "principalSeat": "Chandigarh", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "rajasthan", "name": "Rajasthan High Court", "statesOrUnionTerritories": ["Rajasthan"], "principalSeat": "Jodhpur", "benches": ["Jaipur"], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "sikkim", "name": "Sikkim High Court", "statesOrUnionTerritories": ["Sikkim"], "principalSeat": "Gangtok", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "telangana", "name": "Telangana High Court", "statesOrUnionTerritories": ["Telangana"], "principalSeat": "Hyderabad", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "tripura", "name": "Tripura High Court", "statesOrUnionTerritories": ["Tripura"], "principalSeat": "Agartala", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" },
+    { "id": "uttarakhand", "name": "Uttarakhand High Court", "statesOrUnionTerritories": ["Uttarakhand"], "principalSeat": "Nainital", "benches": [], "officialDirectory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts" }
+  ]
+}

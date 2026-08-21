@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataset": "indian-democracy-source-registry",
+  "snapshotDate": "2026-08-21",
+  "sources": [
+    { "id": "lgd", "publisher": "Ministry of Panchayati Raj", "title": "Local Government Directory", "url": "https://lgdirectory.gov.in/demo/downloadDirectory.do", "authorityTier": "Tier 1", "usedFor": ["states", "unionTerritories", "districts"], "asOf": "2026-08-21", "notes": "Official public directory service; raw LGD codes are retained." },
+    { "id": "lok-sabha", "publisher": "Digital Sansad", "title": "Lok Sabha Members", "url": "https://sansad.in/ls/members", "authorityTier": "Tier 1", "usedFor": ["lokSabhaMembers", "lokSabhaVacancies"], "asOf": "2026-08-21", "notes": "The site’s public member service is client-rendered; the collection script records the public endpoint and retrieval metadata." },
+    { "id": "rajya-sabha", "publisher": "Digital Sansad", "title": "Rajya Sabha Members", "url": "https://sansad.in/rs/members", "authorityTier": "Tier 1", "usedFor": ["rajyaSabhaMembers"], "asOf": "2026-08-21", "notes": "Current sitting-member roster from the official Digital Sansad service." },
+    { "id": "pmo", "publisher": "Prime Minister's Office", "title": "Portfolios of the Union Council of Ministers", "url": "https://www.pmindia.gov.in/en/news_updates/portfolios-of-the-union-council-of-ministers-2/", "authorityTier": "Tier 1", "usedFor": ["primeMinister", "unionCouncilOfMinisters"], "asOf": "2026-07-25", "notes": "The official page states the portfolio list is as on 25.07.2026." },
+    { "id": "president", "publisher": "Rashtrapati Bhavan", "title": "President of India", "url": "https://presidentofindia.gov.in/about-us", "authorityTier": "Tier 1", "usedFor": ["president"], "asOf": "2026-08-21" },
+    { "id": "vice-president", "publisher": "Vice-President's Secretariat", "title": "Vice-President of India", "url": "https://vicepresidentofindia.nic.in/", "authorityTier": "Tier 1", "usedFor": ["vicePresident"], "asOf": "2026-08-21" },
+    { "id": "supreme-court", "publisher": "Supreme Court of India", "title": "Chief Justice and Judges", "url": "https://www.sci.gov.in/chief-justice-judges/", "authorityTier": "Tier 1", "usedFor": ["supremeCourtJudges"], "asOf": "2026-08-21" },
+    { "id": "high-courts", "publisher": "Department of Justice / Supreme Court eCommittee", "title": "High Court judge lists and jurisdiction directory", "url": "https://doj.gov.in/list-of-high-court-judges/", "authorityTier": "Tier 1", "usedFor": ["highCourtJurisdictions", "highCourtJudgeRosterSources"], "asOf": "2026-08-21", "notes": "Central judge lists are dated baseline documents; current names require reconciliation with the relevant High Court’s official roster." }
+  ]
+}

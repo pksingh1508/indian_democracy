@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataset": "india-high-court-judge-roster-sources",
+  "snapshotDate": "2026-08-21",
+  "retrievedAt": "2026-08-21T00:00:00+05:30",
+  "coverageStatus": "source-index-and-dated-baseline",
+  "source": {
+    "publisher": "Department of Justice, Ministry of Law and Justice",
+    "title": "List of High Court Judges",
+    "url": "https://doj.gov.in/list-of-high-court-judges/",
+    "authorityTier": "Tier 1",
+    "notes": "The Department of Justice publishes dated judge-list PDFs, while current sitting rosters are maintained by each High Court. This index keeps both the central baseline and the court-level refresh path."
+  },
+  "centralBaseline": {
+    "asOn": "2026-04-01",
+    "status": "dated-baseline-not-current-as-of-snapshot",
+    "knownPdfSources": [
+      { "highCourtId": "allahabad", "url": "https://www.doj.gov.in/static/uploads/2026/04/8e013ecf2f060fe73cdb726fb2348a46.pdf" },
+      { "highCourtId": "bombay", "url": "https://www.doj.gov.in/static/uploads/2026/04/bb4061a02f134ff1b589f091c525e9a9.pdf" },
+      { "highCourtId": "gujarat", "url": "https://www.doj.gov.in/static/uploads/2026/04/dc33533c2f53e9a853d41c14607cf834.pdf" },
+      { "highCourtId": "karnataka", "url": "https://www.doj.gov.in/static/uploads/2026/04/bb2618cb2e1c8c717a7272aa2eeb5b23.pdf" },
+      { "highCourtId": "kerala", "url": "https://www.doj.gov.in/static/uploads/2026/04/8a2480007a5050692aae450c69675ced.pdf" },
+      { "highCourtId": "madhya-pradesh", "url": "https://www.doj.gov.in/static/uploads/2026/04/f300965863de253aff840c5745363be4.pdf" },
+      { "highCourtId": "madras", "url": "https://www.doj.gov.in/static/uploads/2026/04/997ed3936ae0854d4ffaea8a61e926dc.pdf" },
+      { "highCourtId": "orissa", "url": "https://www.doj.gov.in/static/uploads/2026/04/c05fb4ff240ec2650d9ce606f19bae96.pdf" },
+      { "highCourtId": "punjab-haryana", "url": "https://www.doj.gov.in/static/uploads/2026/04/2de3524e61849856f45571cafbdeb2a6.pdf" },
+      { "highCourtId": "rajasthan", "url": "https://www.doj.gov.in/static/uploads/2026/04/8c2672d2f0e45942f84740627cba1a67.pdf" },
+      { "highCourtId": "telangana", "url": "https://www.doj.gov.in/static/uploads/2026/04/3af8ece2ba6c74b20b1cd70cf967b6b5.pdf" }
+    ]
+  },
+  "currentRosterSources": {
+    "directory": "https://ecourts.gov.in/ecourts2.0/?p=about_us%2Fhighcourts",
+    "notes": "Use the officialDirectory field in high-court-jurisdictions.json for court-level current rosters. The current-roster collection is intentionally separate from the April central baseline because judge appointments, transfers, retirements, and additional-judge terms can change during the year."
+  }
+}

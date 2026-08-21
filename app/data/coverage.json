@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataset": "indian-democracy-data-coverage",
+  "snapshotDate": "2026-08-21",
+  "coverage": [
+    { "area": "states-and-union-territories", "status": "complete", "records": 36, "file": "geography/states-and-districts.json" },
+    { "area": "districts", "status": "complete", "records": 784, "file": "geography/states-and-districts.json" },
+    { "area": "lok-sabha", "status": "complete-current-snapshot", "records": 543, "file": "parliament/lok-sabha-members.json", "notes": "540 sitting members and 3 official vacancies." },
+    { "area": "rajya-sabha", "status": "complete-current-snapshot", "records": 245, "file": "parliament/rajya-sabha-members.json", "notes": "244 sitting members and 1 official vacancy." },
+    { "area": "union-executive", "status": "complete-for-collected-offices", "records": 72, "file": "executive/", "notes": "President, Vice-President, Prime Minister, and 69 Union ministers." },
+    { "area": "supreme-court", "status": "complete-current-snapshot", "records": 35, "file": "judiciary/supreme-court-judges.json" },
+    { "area": "high-court-jurisdiction", "status": "complete", "records": 25, "file": "judiciary/high-court-jurisdictions.json" },
+    { "area": "high-court-judge-names", "status": "partial-dated-baseline", "records": 422, "file": "judiciary/high-court-judges-baseline.json", "notes": "11 of 25 courts from Department of Justice PDFs dated 2026-04-01; not presented as the 2026-08-21 sitting roster." },
+    { "area": "state-legislatures-and-state-executives", "status": "not-yet-collected", "records": 0, "notes": "Requires separate official state-by-state source collection." },
+    { "area": "district-court-judicial-officers", "status": "not-yet-collected", "records": 0, "notes": "Not the same as High Court judges and requires a separate court/judiciary source workflow." },
+    { "area": "all-government-employees", "status": "out-of-scope", "records": 0, "notes": "No single authoritative public roster; the project uses public-office and constitutional/statutory role datasets instead." }
+  ]
+}
