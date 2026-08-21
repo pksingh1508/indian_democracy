@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FreshnessBadge } from "@/src/components/badges";
 import {
   AnimatedHemicycle,
-  CountUp,
   CtaLink,
-  MaskLine,
   Reveal,
   ScrollProgress,
   Stagger,
@@ -19,9 +16,12 @@ import {
   rajyaSabhaPartyCounts,
 } from "@/src/lib/data/parliament";
 import { buildChamberBlocks, generateSeats } from "@/src/lib/chamber";
+import { buildParliamentFloor } from "@/src/lib/parliament-floor";
+import type { LegendEntry } from "@/src/components/landingPage";
+import { LandingPage } from "@/src/components/landingPage";
+import { partyColor } from "@/src/lib/parties";
 import { councilOfMinisters, getConstitutionalOfficeholder } from "@/src/lib/data/executive";
-import { supremeCourtJudges } from "@/src/lib/data/judiciary";
-import { districtCount, states } from "@/src/lib/data/geography";
+import { states } from "@/src/lib/data/geography";
 import { formatIsoDate, slugify, titleCase } from "@/src/lib/format";
 
 export const metadata: Metadata = {
@@ -49,16 +49,28 @@ const EXECUTIVE_CARDS = [
   },
 ] as const;
 
-const HERO_STATS = [
-  { n: lokSabha.house.sanctionedSeats, label: "Lok Sabha seats" },
-  { n: rajyaSabha.house.sanctionedSeats, label: "Rajya Sabha seats" },
-  { n: councilOfMinisters.ministers.length, label: "Union ministers" },
-  { n: supremeCourtJudges.length, label: "Supreme Court judges" },
-  { n: states.length, label: "States & UTs" },
-  { n: districtCount, label: "Districts mapped" },
-];
-
 export default function HomePage() {
+  const floor = buildParliamentFloor();
+  const legend: LegendEntry[] = [
+    ...lokSabhaPartyCounts
+      .filter((p) => p.key !== "DMK")
+      .sort((a, b) => b.seats - a.seats)
+      .slice(0, 9)
+      .map((p) => ({
+        label: p.abbreviation ?? p.name,
+        color: partyColor(p.key),
+        count: p.seats,
+      })),
+    ...(lokSabhaPartyCounts.find((p) => p.key === "DMK")
+      ? [
+          {
+            label: "DMK",
+            color: partyColor("DMK"),
+            count: lokSabhaPartyCounts.find((p) => p.key === "DMK")!.seats,
+          },
+        ]
+      : []),
+  ];
   const lsBlocks = buildChamberBlocks(lokSabhaPartyCounts, lokSabha.counts.officialVacancies);
   const rsBlocks = buildChamberBlocks(rajyaSabhaPartyCounts, rajyaSabha.counts.officialVacancies);
   const lsView = generateSeats(lsBlocks);
@@ -68,89 +80,8 @@ export default function HomePage() {
     <>
       <ScrollProgress />
 
-      {/* Hero — thesis + the signature composition arc */}
-      <section className="border-b border-rule bg-surface">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[7fr_5fr] lg:py-20">
-          <div>
-            <Reveal load y={12}>
-              <p className="eyebrow mb-4">
-                Independent · Non-partisan · Source-linked
-              </p>
-            </Reveal>
-            <h1 className="font-display text-[2.6rem] leading-[1.08] text-ink sm:text-6xl">
-              <MaskLine delay={0.08}>Who holds public office.</MaskLine>
-              <MaskLine delay={0.2}>
-                <span className="text-indelible">What the record says.</span>
-              </MaskLine>
-            </h1>
-            <Reveal load delay={0.34} y={20}>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-                A register of India&apos;s democratic institutions — the Union
-                executive, both Houses of Parliament, the courts, and all{" "}
-                {states.length} states and Union Territories. Every current-office
-                fact carries its official source and the day it was checked.
-              </p>
-            </Reveal>
-
-            <Stagger
-              as="div"
-              load
-              stagger={0.09}
-              delay={0.46}
-              className="mt-7 flex flex-wrap items-center gap-3"
-            >
-              <StaggerItem>
-                <CtaLink href="/parliament">Explore Parliament</CtaLink>
-              </StaggerItem>
-              <StaggerItem>
-                <CtaLink href="/states" secondary>Find your state</CtaLink>
-              </StaggerItem>
-              <StaggerItem y={8}>
-                <FreshnessBadge snapshotDate={formatIsoDate(lokSabha.snapshotDate)} />
-              </StaggerItem>
-            </Stagger>
-
-            {/* Ledger stats */}
-            <Stagger
-              as="dl"
-              load
-              stagger={0.06}
-              delay={0.58}
-              className="mt-10 grid grid-cols-2 gap-x-8 gap-y-4 border-t border-rule pt-6 sm:grid-cols-3"
-            >
-              {HERO_STATS.map((s) => (
-                <StaggerItem key={s.label} as="div" y={14}>
-                  <dt className="order-2 mt-0.5 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-faint">
-                    {s.label}
-                  </dt>
-                  <dd className="font-display text-2xl tabular-nums">
-                    <CountUp value={s.n} />
-                  </dd>
-                </StaggerItem>
-              ))}
-            </Stagger>
-          </div>
-
-          <Reveal load delay={0.42} y={36}>
-            <figure aria-hidden={false}>
-              <Link href="/parliament/lok-sabha" className="group block no-underline">
-                <AnimatedHemicycle
-                  seats={lsView.seats}
-                  geometry={lsView.geometry}
-                  summaryLabel={`Lok Sabha chamber-style composition, ${lokSabha.counts.sittingMembers} members and ${lokSabha.counts.officialVacancies} vacancies`}
-                  className="w-full"
-                />
-                <figcaption className="mt-2 flex items-baseline justify-between font-mono text-xs text-faint">
-                  <span>18th Lok Sabha · computed from the official roster</span>
-                  <span className="text-indelible transition-transform duration-300 group-hover:translate-x-1">
-                    Open →
-                  </span>
-                </figcaption>
-              </Link>
-            </figure>
-          </Reveal>
-        </div>
-      </section>
+      {/* Hero — interactive Lok Sabha chamber */}
+      <LandingPage floor={floor} legend={legend} />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Union executive */}

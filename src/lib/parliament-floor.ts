@@ -2,6 +2,15 @@ import { lokSabha, lokSabhaMembers, lokSabhaPartyCounts } from "@/src/lib/data/p
 import { councilOfMinisters } from "@/src/lib/data/executive";
 import { formatIsoDate, stripHonorific } from "@/src/lib/format";
 import { partyColor } from "@/src/lib/parties";
+import {
+  GAP_HALF,
+  PAD,
+  PHI_MAX,
+  ROW_RADII,
+  type FloorPerson,
+  type ParliamentFloor,
+  type Side,
+} from "@/src/lib/parliament-floor-geometry";
 
 /**
  * Floor plan for the interactive Lok Sabha chamber scene.
@@ -18,55 +27,28 @@ import { partyColor } from "@/src/lib/parties";
  * chart, which is not public data. Named members below are real roster entries
  * (ids resolve against app/data/parliament) seated at prominent positions
  * consistent with reporting.
+ *
+ * Geometry constants and shared DTOs live in the client-safe module
+ * `parliament-floor-geometry.ts`; this server module resolves them against
+ * the official roster.
  */
 
-export const FOCUS_X = 0;
-export const FOCUS_Z = 0;
+export {
+  FOCUS_X,
+  FOCUS_Z,
+  GAP_HALF,
+  PAD,
+  PHI_MAX,
+  ROW_RADII,
+} from "@/src/lib/parliament-floor-geometry";
+export type {
+  FloorPerson,
+  FloorSeat,
+  ParliamentFloor,
+  Side,
+} from "@/src/lib/parliament-floor-geometry";
 
-/** Row radii (metres) from the focus — front row first. */
-export const ROW_RADII = [3.05, 3.77, 4.49, 5.21, 5.93, 6.65, 7.37, 8.09] as const;
-
-/** Half-angle of the horseshoe sweep (radians) measured from the axis. */
-export const PHI_MAX = 1.98;
-/** Half-width of the central aisle gap (radians) at φ≈0. */
-export const GAP_HALF = 0.07;
-/** Edge padding inside each row segment (radians). */
-export const PAD = 0.035;
-
-type Side = "treasury" | "opposition";
-
-export interface FloorSeat {
-  x: number;
-  z: number;
-  yawDeg: number;
-  color: string;
-  vacant: boolean;
-}
-
-export interface FloorPerson {
-  id: string;
-  /** Full roster name, e.g. "Shri Narendra Modi". */
-  name: string;
-  display: string;
-  partyAbbr: string;
-  partyName: string;
-  constituency: string;
-  stateOrUT: string;
-  role: string | null;
-  side: Side | "chair";
-  x: number;
-  z: number;
-  yawDeg: number;
-}
-
-export interface ParliamentFloor {
-  seats: FloorSeat[];
-  persons: FloorPerson[];
-  speaker: FloorPerson;
-  sittingMembers: number;
-  vacancies: number;
-  snapshotLabel: string;
-}
+const VACANT_COLOR = "#a9adb8";
 
 interface QueueEntry {
   key: string;
