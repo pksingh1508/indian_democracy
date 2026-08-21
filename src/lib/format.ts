@@ -37,14 +37,19 @@ export function slugify(value: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
-/** Normalize state/UT names across datasets ("Jammu & Kashmir" vs "Jammu And Kashmir", leading "The"). */
+/** Normalize state/UT names across datasets ("Jammu & Kashmir" vs "Jammu And Kashmir", "NCT of Delhi", leading "The"). */
+const STATE_ALIASES: Record<string, string> = {
+  nctofdelhi: "delhi",
+  nationalcapitalterritoryofdelhi: "delhi",
+};
+
 export function normalizeStateName(name: string): string {
-  return name
+  const normalized = name
     .toLowerCase()
     .replace(/^the\s+/, "")
     .replace(/&/g, " and ")
-    .replace(/\band\b/g, "and")
     .replace(/[^a-z]+/g, "");
+  return STATE_ALIASES[normalized] ?? normalized;
 }
 
 const MONTHS = [
