@@ -38,13 +38,13 @@ export function Chamber3DCanvas({
       return;
     }
 
-    const width = mount.clientWidth;
+    const width = Math.max(1, mount.clientWidth);
     const height = Math.max(360, Math.min(480, width * 0.55));
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height);
-    mount.appendChild(renderer.domElement);
     renderer.domElement.style.width = "100%";
     renderer.domElement.style.display = "block";
+    mount.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
     scene.background = null;
@@ -75,15 +75,38 @@ export function Chamber3DCanvas({
     if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
     scene.add(mesh);
 
-    // Floor arc hint.
-    const floor = new THREE.Mesh(
-      new THREE.CircleGeometry(9, 64, Math.PI, Math.PI).rotateX(-Math.PI / 2).translate(0, -0.02, 1.2),
-      new THREE.MeshBasicMaterial({ color: 0x888888, transparent: true, opacity: 0.07 }),
-    );
+    // Subtle floor arc hint.
+    const floorGeometry = new THREE.CircleGeometry(9, 64, Math.PI, Math.PI)
+      .rotateX(-Math.PI / 2)
+      .translate(0, -0.02, 1.2);
+    const floorMaterial = new THREE.MeshBasicMaterial({
+      color: 0x888888,
+      transparent: true,
+      opacity: 0.07,
+    });
+    const floor = new THREE.Mesh(floorGeometry, floorMaterial);
     scene.add(floor);
 
     let controls: OrbitControlsImpl | undefined;
+    let disposed = false;
+    let renderQueued = false;
+
+    function renderOnce() {
+      if (!disposed && !document.hidden) {
+        renderer.render(scene, camera);
+      }
+    }
+    function requestRender() {
+      if (renderQueued || disposed) return;
+      renderQueued = true;
+      requestAnimationFrame(() => {
+        renderQueued = false;
+        renderOnce();
+      });
+    }
+
     import("three/examples/jsm/controls/OrbitControls.js").then(({ OrbitControls }) => {
+      if (disposed) return;
       controls = new OrbitControls(camera, renderer.domElement);
       controls.target.copy(CAM_TARGET);
       controls.enableDamping = false;
@@ -95,25 +118,12 @@ export function Chamber3DCanvas({
       renderOnce();
     });
 
-    let renderQueued = false;
-    function renderOnce() {
-      if (document.hidden) return; // pause when tab is hidden
-      renderer.render(scene, camera);
-    }
-    function requestRender() {
-      if (renderQueued) return;
-      renderQueued = true;
-      requestAnimationFrame(() => {
-        renderQueued = false;
-        renderOnce();
-      });
-    }
-
     // Pointer selection via raycasting.
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
     function onPointerDown(event: PointerEvent) {
       const rect = renderer.domElement.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
       pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
       pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
       raycaster.setFromCamera(pointer, camera);
@@ -138,8 +148,7 @@ export function Chamber3DCanvas({
     document.addEventListener("visibilitychange", onVisibility);
 
     function onResize() {
-      if (!mount) return;
-      const w = mount.clientWidth;
+      const w = mount?.clientWidth ?? 0;
       if (w === 0) return;
       camera.aspect = w / height;
       camera.updateProjectionMatrix();
@@ -152,6 +161,7 @@ export function Chamber3DCanvas({
     renderOnce();
 
     return () => {
+      disposed = true;
       observer.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
       renderer.domElement.removeEventListener("pointerdown", onPointerDown);
@@ -159,8 +169,8 @@ export function Chamber3DCanvas({
       controls?.dispose();
       seatGeometry.dispose();
       seatMaterial.dispose();
-      floor.geometry.dispose();
-      (floor.material as THREE.Material).dispose();
+      floorGeometry.dispose();
+      floorMaterial.dispose();
       mesh.dispose();
       renderer.dispose();
       if (renderer.domElement.parentElement === mount) {
@@ -169,26 +179,12 @@ export function Chamber3DCanvas({
     };
   }, [points, blockKeys, onFailure]);
 
-  const resetCamera = () => {
-    // Simplest robust reset: remount by toggling a key would lose selection;
-    // instead dispatch through the canvas by re-adding — we keep it simple
-    // and reload the component-scoped effect via a stateful remount.
-    setRemount((n) => n + 1);
-  };
-
-  const [remount, setRemount] = useRemountState();
-
   return (
-    <div>
-      <div ref={mountRef} data-remount={remount} className="overflow-hidden rounded-md border border-rule bg-paper" aria-label={`3D chamber view with ${points.length} seats`} role="img" />
-      <button type="button" onClick={resetCamera} className="button secondary mt-2">
-        Reset camera
-      </button>
-    </div>
+    <div
+      ref={mountRef}
+      className="overflow-hidden rounded-md border border-rule bg-paper"
+      aria-label={`3D chamber view with ${points.length} seats`}
+      role="img"
+    />
   );
-}
-
-import { useState } from "react";
-function useRemountState(): [number, (fn: (n: number) => number) => void] {
-  return useState(0);
 }
