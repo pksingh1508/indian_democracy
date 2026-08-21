@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FreshnessBadge } from "@/src/components/badges";
+import { DemocracyCursor } from "@/src/components/democracy-cursor";
 import {
   AnimatedHemicycle,
   CountUp,
@@ -66,6 +67,7 @@ export default function HomePage() {
 
   return (
     <>
+      <DemocracyCursor />
       <ScrollProgress />
 
       {/* Hero — thesis + the signature composition arc */}
