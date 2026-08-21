@@ -15,10 +15,16 @@ import {
  * crowned by a slowly turning Ashoka Chakra — that trails the cursor
  * on spring physics and banks into its direction of travel.
  *
+ * Mounted once in the root layout so it persists across every page.
  * Rendered only for fine-pointer devices; disabled for reduced motion.
  */
 
 const SIZE = 144;
+const HALF = SIZE / 2;
+
+/* Interactive elements make the emblem lean in slightly. */
+const INTERACTIVE_SELECTOR =
+  "a, button, input, select, textarea, label, summary, [role='button']";
 
 /* 24-spoke Chakra: 12 diameter lines at 15° */
 const CHAKRA = { cx: 100, cy: 34, r: 17 };
@@ -38,6 +44,8 @@ const COLUMNS = Array.from({ length: 9 }, (_, i) => 60 + i * 10);
 export function DemocracyCursor() {
   const reduce = useReducedMotion();
   const [seen, setSeen] = useState(false);
+  const [hovering, setHovering] = useState(false);
+  const [pressed, setPressed] = useState(false);
 
   /* Raw pointer position */
   const px = useMotionValue(-SIZE);
@@ -47,7 +55,7 @@ export function DemocracyCursor() {
   const x = useSpring(px, { stiffness: 110, damping: 17, mass: 0.65 });
   const y = useSpring(py, { stiffness: 110, damping: 17, mass: 0.65 });
 
-  /* Bank into horizontal travel: spring the velocity-derived tilt */
+  /* Bank into horizontal travel: velocity drives a spring-fed tilt */
   const vx = useVelocity(x);
   const tiltTarget = useTransform(vx, [-1400, 0, 1400], [-16, 0, 16]);
   const tilt = useSpring(tiltTarget, { stiffness: 170, damping: 22 });
@@ -59,24 +67,48 @@ export function DemocracyCursor() {
     }
 
     let raf = 0;
+    let seenFrame = false;
     const onMove = (e: PointerEvent) => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
         px.set(e.clientX);
         py.set(e.clientY);
-        setSeen(true);
+        if (!seenFrame) {
+          seenFrame = true;
+          setSeen(true);
+        }
       });
     };
-    const onLeave = () => setSeen(false);
+    const onLeave = () => {
+      seenFrame = false;
+      setSeen(false);
+      setPressed(false);
+    };
+    const onOver = (e: PointerEvent) => {
+      const t = e.target;
+      setHovering(
+        t instanceof Element && t.closest(INTERACTIVE_SELECTOR) !== null
+      );
+    };
+    const onDown = () => setPressed(true);
+    const onUp = () => setPressed(false);
 
     window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerover", onOver, { passive: true });
+    window.addEventListener("pointerdown", onDown, { passive: true });
+    window.addEventListener("pointerup", onUp, { passive: true });
     document.documentElement.addEventListener("pointerleave", onLeave);
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerover", onOver);
+      window.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("pointerup", onUp);
       document.documentElement.removeEventListener("pointerleave", onLeave);
     };
   }, [reduce, px, py]);
+
+  if (reduce) return null;
 
   return (
     <motion.div
@@ -85,24 +117,35 @@ export function DemocracyCursor() {
       style={{ x, y }}
     >
       <motion.div
-        className="-ml-[72px] -mt-[72px]"
+        style={{ marginLeft: -HALF, marginTop: -HALF }}
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{
           opacity: seen ? 0.92 : 0,
-          scale: seen ? 1 : 0.5,
+          scale: seen ? (pressed ? 0.88 : hovering ? 1.16 : 1) : 0.5,
         }}
-        transition={{ type: "spring", stiffness: 240, damping: 22 }}
+        transition={{ type: "spring", stiffness: 260, damping: 20 }}
       >
-        <motion.div
-          style={{ rotate: tilt }}
-          animate={{ y: [0, -9, 0] }}
-          transition={{
-            y: { repeat: Infinity, duration: 5.2, ease: "easeInOut" },
-            default: { type: "spring", stiffness: 170, damping: 22 },
-          }}
-        >
-          <DemocracyMark />
-        </motion.div>
+        <div className="relative">
+          {/* soft halo so the emblem stays legible over dense tables */}
+          <div
+            className="absolute rounded-full"
+            style={{
+              inset: -18,
+              background:
+                "radial-gradient(closest-side, var(--indelible-tint), transparent)",
+            }}
+          />
+          <motion.div
+            style={{ rotate: tilt }}
+            animate={{ y: [0, -9, 0] }}
+            transition={{
+              y: { repeat: Infinity, duration: 5.2, ease: "easeInOut" },
+              default: { type: "spring", stiffness: 170, damping: 22 },
+            }}
+          >
+            <DemocracyMark />
+          </motion.div>
+        </div>
       </motion.div>
     </motion.div>
   );
