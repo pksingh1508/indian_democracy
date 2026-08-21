@@ -5,19 +5,19 @@ import { Breadcrumbs } from "@/src/components/breadcrumbs";
 import { PageHeader, SectionHeading } from "@/src/components/ui";
 import { StatusBadge } from "@/src/components/badges";
 import { PartyTag } from "@/src/components/party-tag";
-import {
-  getDistrictsByStateCode,
-  states,
-} from "@/src/lib/data/geography";
+import { getDistrictsByStateCode, states } from "@/src/lib/data/geography";
 import {
   lokSabhaMembersByState,
   lokSabhaVacancies,
   rajyaSabhaMembersByState,
 } from "@/src/lib/data/parliament";
+import { highCourtsServingState } from "@/src/lib/data/judiciary";
 import {
-  highCourtsServingState,
-} from "@/src/lib/data/judiciary";
-import { normalizeStateName, reorderSabhaName, slugify, stripHonorific } from "@/src/lib/format";
+  normalizeStateName,
+  reorderSabhaName,
+  slugify,
+  stripHonorific,
+} from "@/src/lib/format";
 
 const UT_NORMALIZED = new Set([
   "andamanandnicobarislands",
@@ -79,7 +79,9 @@ export default async function StatePage(props: PageProps<"/states/[slug]">) {
         meta={
           <>
             <StatusBadge tone="ok">Geography complete</StatusBadge>
-            <StatusBadge tone="missing">State executive not yet collected</StatusBadge>
+            <StatusBadge tone="missing">
+              State executive not yet collected
+            </StatusBadge>
           </>
         }
       />
@@ -94,7 +96,7 @@ export default async function StatePage(props: PageProps<"/states/[slug]">) {
         />
         <div className="grid gap-8 lg:grid-cols-2">
           <div>
-            <h3 className="mb-3 font-mono text-xs uppercase tracking-[0.1em] text-muted">
+            <h3 className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
               Lok Sabha — constituencies &amp; members
             </h3>
             {lsMembers.length > 0 ? (
@@ -124,7 +126,10 @@ export default async function StatePage(props: PageProps<"/states/[slug]">) {
                           </Link>
                         </td>
                         <td className="align-top text-sm">
-                          <PartyTag name={m.party} abbreviation={m.partyAbbreviation} />
+                          <PartyTag
+                            name={m.party}
+                            abbreviation={m.partyAbbreviation}
+                          />
                         </td>
                       </tr>
                     ))}
@@ -133,14 +138,14 @@ export default async function StatePage(props: PageProps<"/states/[slug]">) {
               </div>
             ) : (
               <p className="rounded-lg border border-dashed border-rule-strong bg-paper p-4 text-sm text-muted">
-                No sitting Lok Sabha members recorded for this jurisdiction in the
-                current roster.
+                No sitting Lok Sabha members recorded for this jurisdiction in
+                the current roster.
               </p>
             )}
           </div>
 
           <div>
-            <h3 className="mb-3 font-mono text-xs uppercase tracking-[0.1em] text-muted">
+            <h3 className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
               Rajya Sabha — elected &amp; nominated members
             </h3>
             {rsMembers.length > 0 ? (
@@ -159,12 +164,18 @@ export default async function StatePage(props: PageProps<"/states/[slug]">) {
                       return (
                         <tr key={m.id}>
                           <td className="align-top">
-                            <Link href={`/people/${m.id}`} className="text-link">
+                            <Link
+                              href={`/people/${m.id}`}
+                              className="text-link"
+                            >
                               {display}
                             </Link>
                           </td>
                           <td className="align-top text-sm">
-                            <PartyTag name={m.party} abbreviation={m.partyAbbreviation} />
+                            <PartyTag
+                              name={m.party}
+                              abbreviation={m.partyAbbreviation}
+                            />
                           </td>
                           <td className="align-top font-mono text-xs text-muted tabular-nums">
                             {m.term}
@@ -196,12 +207,16 @@ export default async function StatePage(props: PageProps<"/states/[slug]">) {
           <ul className="grid gap-4 sm:grid-cols-2">
             {courts.map((court) => (
               <li key={court.id} className="record-card p-5">
-                <Link href={`/high-courts/${court.id}`} className="font-display text-lg text-indelible no-underline">
+                <Link
+                  href={`/high-courts/${court.id}`}
+                  className="font-display text-lg text-indelible no-underline"
+                >
                   {court.name}
                 </Link>
                 <p className="mt-1 text-sm text-muted">
                   Principal seat: {court.principalSeat}
-                  {court.benches.length > 0 && ` · benches at ${court.benches.join(", ")}`}
+                  {court.benches.length > 0 &&
+                    ` · benches at ${court.benches.join(", ")}`}
                 </p>
               </li>
             ))}
@@ -228,7 +243,10 @@ export default async function StatePage(props: PageProps<"/states/[slug]">) {
         <div className="rounded-lg border border-rule bg-surface p-5">
           <ul className="grid grid-cols-2 gap-x-6 gap-y-1.5 text-sm sm:grid-cols-3 lg:grid-cols-4">
             {districts.map((d) => (
-              <li key={d.districtCode} className="flex items-baseline justify-between gap-2 border-b border-rule/60 pb-1">
+              <li
+                key={d.districtCode}
+                className="flex items-baseline justify-between gap-2 border-b border-rule/60 pb-1"
+              >
                 <span>{d.districtName}</span>
                 <span className="font-mono text-[0.7rem] text-faint tabular-nums">
                   {d.districtCode}
@@ -244,12 +262,14 @@ export default async function StatePage(props: PageProps<"/states/[slug]">) {
         jurisdiction’s Governor/Lieutenant Governor, Chief Minister, Council of
         Ministers, and legislators require the state-by-state collection that is
         tracked openly on the{" "}
-        <Link href="/coverage" className="text-link">coverage report</Link>. The three
-        national vacancy records ({lokSabhaVacancies.map((v) => v.constituency).join(", ")})
-        belong to other jurisdictions’ Lok Sabha maps and are shown on their
-        chamber pages.
+        <Link href="/coverage" className="text-link">
+          coverage report
+        </Link>
+        . The three national vacancy records (
+        {lokSabhaVacancies.map((v) => v.constituency).join(", ")}) belong to
+        other jurisdictions’ Lok Sabha maps and are shown on their chamber
+        pages.
       </aside>
     </div>
   );
 }
-
