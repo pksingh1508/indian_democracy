@@ -1,26 +1,213 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ---------------------------------------------------------------------------
+   Lokkosh design tokens — "the open record".
+   Paper-and-ink ground, indelible-violet accent (election ink), ledger rules.
+   Party colors appear only as data, never as UI identity.
+--------------------------------------------------------------------------- */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --paper: #fafaf7;
+  --surface: #ffffff;
+  --ink: #1a1d26;
+  --muted: #5c606b;
+  --faint: #8a8e99;
+  --rule: #e6e4db;
+  --rule-strong: #cfccc0;
+  --indelible: #5533a4;
+  --indelible-strong: #43287f;
+  --indelible-tint: #f1ecfb;
+  --saffron: #e8842c;
+  --leaf: #1e7a46;
+  --seat-track: #eceae2;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --paper: #13151c;
+    --surface: #1a1d28;
+    --ink: #ebebe5;
+    --muted: #a6aab4;
+    --faint: #787d89;
+    --rule: #272b37;
+    --rule-strong: #3a3f4e;
+    --indelible: #b49ce8;
+    --indelible-strong: #cdbcea;
+    --indelible-tint: rgba(180, 156, 232, 0.12);
+    --saffron: #eda45f;
+    --leaf: #58ab7d;
+    --seat-track: #232734;
   }
 }
 
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-indelible: var(--indelible);
+  --color-indelible-strong: var(--indelible-strong);
+  --color-indelible-tint: var(--indelible-tint);
+  --color-saffron: var(--saffron);
+  --color-leaf: var(--leaf);
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-display: var(--font-rozha), ui-serif, Georgia, serif;
+}
+
+html {
+  color-scheme: light dark;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--indelible);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--indelible);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.75rem;
+  z-index: 100;
+  background: var(--indelible);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+.skip-link:focus {
+  left: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Ledger-style eyebrow label */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* Record card */
+.record-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 0.5rem;
+}
+
+a.text-link {
+  color: var(--indelible);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--indelible) 45%, transparent);
+}
+a.text-link:hover {
+  color: var(--indelible-strong);
+  text-decoration-color: currentColor;
+}
+
+/* Data tables */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.data-table caption {
+  text-align: left;
+  padding-bottom: 0.5rem;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.data-table thead th {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule-strong);
+  white-space: nowrap;
+}
+.data-table tbody tr:hover {
+  background: color-mix(in srgb, var(--indelible) 4%, transparent);
+}
+.data-table td.num,
+.data-table th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Form controls */
+.input,
+.select {
+  background: var(--surface);
+  border: 1px solid var(--rule-strong);
+  border-radius: 0.375rem;
+  padding: 0.45rem 0.65rem;
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+.input:focus-visible,
+.select:focus-visible {
+  outline: 2px solid var(--indelible);
+  outline-offset: 1px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--indelible);
+  color: #fff;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.button:hover {
+  background: var(--indelible-strong);
+}
+.button.secondary {
+  background: transparent;
+  color: var(--indelible);
+  border: 1px solid var(--rule-strong);
+}
+.button.secondary:hover {
+  border-color: var(--indelible);
+  background: var(--indelible-tint);
 }
