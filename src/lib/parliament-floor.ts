@@ -8,6 +8,7 @@ import {
   PHI_MAX,
   ROW_RADII,
   type FloorPerson,
+  type FloorSeat,
   type ParliamentFloor,
   type Side,
 } from "@/src/lib/parliament-floor-geometry";
@@ -49,6 +50,12 @@ export type {
 } from "@/src/lib/parliament-floor-geometry";
 
 const VACANT_COLOR = "#a9adb8";
+
+/** One block of seats to lay down, keyed by party (or a pseudo-key). */
+interface QueueEntry {
+  key: string;
+  count: number;
+}
 
 /**
  * Alliance ordering as reported for the 18th Lok Sabha. "SS" is the
