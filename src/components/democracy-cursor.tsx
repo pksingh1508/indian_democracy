@@ -24,9 +24,7 @@ export function DemocracyCursor() {
   const y = useSpring(pointerY, { stiffness: 420, damping: 34, mass: 0.35 });
 
   useEffect(() => {
-    if (reduceMotion || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      return;
-    }
+    if (reduceMotion) return;
 
     const hide = () => {
       setIsMoving(false);
@@ -37,6 +35,7 @@ export function DemocracyCursor() {
     };
 
     const onMove = (event: PointerEvent) => {
+      if (event.pointerType && event.pointerType !== "mouse") return;
       if (frame.current !== null) cancelAnimationFrame(frame.current);
 
       frame.current = requestAnimationFrame(() => {
