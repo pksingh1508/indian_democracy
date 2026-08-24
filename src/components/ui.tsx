@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Reveal, Stagger, StaggerItem } from "@/src/components/motion-primitives";
 
 export interface PageHeaderProps {
   eyebrow: string;
@@ -10,13 +11,25 @@ export interface PageHeaderProps {
 
 export function PageHeader({ eyebrow, title, lede, meta, children }: PageHeaderProps) {
   return (
-    <div className="border-b border-rule pb-8">
-      <p className="eyebrow mb-3">{eyebrow}</p>
-      <h1 className="font-display text-4xl leading-tight text-ink sm:text-5xl">{title}</h1>
-      {lede ? <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">{lede}</p> : null}
-      {meta ? <div className="mt-4 flex flex-wrap items-center gap-2">{meta}</div> : null}
-      {children}
-    </div>
+    <Stagger load stagger={0.07} delay={0.08} className="border-b border-rule pb-8">
+      <StaggerItem y={12}>
+        <p className="eyebrow mb-3">{eyebrow}</p>
+      </StaggerItem>
+      <StaggerItem y={18}>
+        <h1 className="font-display text-4xl leading-tight text-ink sm:text-5xl">{title}</h1>
+      </StaggerItem>
+      {lede ? (
+        <StaggerItem y={14}>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">{lede}</p>
+        </StaggerItem>
+      ) : null}
+      {meta ? (
+        <StaggerItem y={10}>
+          <div className="mt-4 flex flex-wrap items-center gap-2">{meta}</div>
+        </StaggerItem>
+      ) : null}
+      {children ? <StaggerItem y={10}>{children}</StaggerItem> : null}
+    </Stagger>
   );
 }
 
@@ -32,13 +45,15 @@ export function SectionHeading({
   aside?: React.ReactNode;
 }) {
   return (
-    <div id={id} className="scroll-mt-24">
-      <div className="mb-1 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-        <h2 className="font-display text-2xl text-ink">{title}</h2>
-        {aside ? <div className="text-sm text-muted">{aside}</div> : null}
+    <Reveal y={14}>
+      <div id={id} className="scroll-mt-24">
+        <div className="mb-1 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+          <h2 className="font-display text-2xl text-ink">{title}</h2>
+          {aside ? <div className="text-sm text-muted">{aside}</div> : null}
+        </div>
+        {eyebrow ? <p className="eyebrow mb-4">{eyebrow}</p> : <div className="mb-4" />}
       </div>
-      {eyebrow ? <p className="eyebrow mb-4">{eyebrow}</p> : <div className="mb-4" />}
-    </div>
+    </Reveal>
   );
 }
 
