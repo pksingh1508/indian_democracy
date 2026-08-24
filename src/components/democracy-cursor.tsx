@@ -1,221 +1,101 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import {
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useSpring,
-  useTransform,
-  useVelocity,
-} from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
 
 /**
- * Decorative "seat of democracy" emblem — a line-art Parliament House
- * crowned by a slowly turning Ashoka Chakra — that trails the cursor
- * on spring physics and banks into its direction of travel.
- *
- * Mounted once in the root layout so it persists across every page.
- * Rendered only for fine-pointer devices; disabled for reduced motion.
+ * A soft tricolour glow that briefly follows mouse movement.
+ * It stays decorative, ignores touch pointers, and fades when the pointer rests.
  */
 
-const SIZE = 144;
+const SIZE = 76;
 const HALF = SIZE / 2;
-
-/* Interactive elements make the emblem lean in slightly. */
-const INTERACTIVE_SELECTOR =
-  "a, button, input, select, textarea, label, summary, [role='button']";
-
-/* 24-spoke Chakra: 12 diameter lines at 15° */
-const CHAKRA = { cx: 100, cy: 34, r: 17 };
-const SPOKES = Array.from({ length: 12 }, (_, i) => {
-  const a = (i * Math.PI) / 12;
-  return {
-    x1: +(CHAKRA.cx + CHAKRA.r * Math.cos(a)).toFixed(2),
-    y1: +(CHAKRA.cy + CHAKRA.r * Math.sin(a)).toFixed(2),
-    x2: +(CHAKRA.cx - CHAKRA.r * Math.cos(a)).toFixed(2),
-    y2: +(CHAKRA.cy - CHAKRA.r * Math.sin(a)).toFixed(2),
-  };
-});
-
-/* Colonnade: evenly spaced pillars across the front facade */
-const COLUMNS = Array.from({ length: 9 }, (_, i) => 60 + i * 10);
+const IDLE_DELAY_MS = 140;
 
 export function DemocracyCursor() {
-  const reduce = useReducedMotion();
-  const [seen, setSeen] = useState(false);
-  const [hovering, setHovering] = useState(false);
-  const [pressed, setPressed] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const [isMoving, setIsMoving] = useState(false);
+  const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const frame = useRef<number | null>(null);
 
-  /* Raw pointer position */
-  const px = useMotionValue(-SIZE);
-  const py = useMotionValue(-SIZE);
-
-  /* Spring-tracked follower — the trailing, weighty feel */
-  const x = useSpring(px, { stiffness: 110, damping: 17, mass: 0.65 });
-  const y = useSpring(py, { stiffness: 110, damping: 17, mass: 0.65 });
-
-  /* Bank into horizontal travel: velocity drives a spring-fed tilt */
-  const vx = useVelocity(x);
-  const tiltTarget = useTransform(vx, [-1400, 0, 1400], [-16, 0, 16]);
-  const tilt = useSpring(tiltTarget, { stiffness: 170, damping: 22 });
+  const pointerX = useMotionValue(-SIZE);
+  const pointerY = useMotionValue(-SIZE);
+  const x = useSpring(pointerX, { stiffness: 420, damping: 34, mass: 0.35 });
+  const y = useSpring(pointerY, { stiffness: 420, damping: 34, mass: 0.35 });
 
   useEffect(() => {
-    if (reduce || typeof window === "undefined") return;
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    if (reduceMotion || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
       return;
     }
 
-    let raf = 0;
-    let seenFrame = false;
-    const onMove = (e: PointerEvent) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        px.set(e.clientX);
-        py.set(e.clientY);
-        if (!seenFrame) {
-          seenFrame = true;
-          setSeen(true);
-        }
+    const hide = () => {
+      setIsMoving(false);
+      if (idleTimer.current) {
+        clearTimeout(idleTimer.current);
+        idleTimer.current = null;
+      }
+    };
+
+    const onMove = (event: PointerEvent) => {
+      if (frame.current !== null) cancelAnimationFrame(frame.current);
+
+      frame.current = requestAnimationFrame(() => {
+        pointerX.set(event.clientX);
+        pointerY.set(event.clientY);
+        setIsMoving(true);
+
+        if (idleTimer.current) clearTimeout(idleTimer.current);
+        idleTimer.current = setTimeout(hide, IDLE_DELAY_MS);
       });
     };
-    const onLeave = () => {
-      seenFrame = false;
-      setSeen(false);
-      setPressed(false);
-    };
-    const onOver = (e: PointerEvent) => {
-      const t = e.target;
-      setHovering(
-        t instanceof Element && t.closest(INTERACTIVE_SELECTOR) !== null
-      );
-    };
-    const onDown = () => setPressed(true);
-    const onUp = () => setPressed(false);
 
     window.addEventListener("pointermove", onMove, { passive: true });
-    window.addEventListener("pointerover", onOver, { passive: true });
-    window.addEventListener("pointerdown", onDown, { passive: true });
-    window.addEventListener("pointerup", onUp, { passive: true });
-    document.documentElement.addEventListener("pointerleave", onLeave);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerover", onOver);
-      window.removeEventListener("pointerdown", onDown);
-      window.removeEventListener("pointerup", onUp);
-      document.documentElement.removeEventListener("pointerleave", onLeave);
-    };
-  }, [reduce, px, py]);
+    document.documentElement.addEventListener("pointerleave", hide);
 
-  if (reduce) return null;
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      document.documentElement.removeEventListener("pointerleave", hide);
+      if (frame.current !== null) cancelAnimationFrame(frame.current);
+      if (idleTimer.current) clearTimeout(idleTimer.current);
+    };
+  }, [pointerX, pointerY, reduceMotion]);
+
+  if (reduceMotion) return null;
 
   return (
     <motion.div
-      aria-hidden
+      aria-hidden="true"
       className="pointer-events-none fixed left-0 top-0 z-20 will-change-transform"
       style={{ x, y }}
     >
       <motion.div
-        style={{ marginLeft: -HALF, marginTop: -HALF }}
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{
-          opacity: seen ? 0.92 : 0,
-          scale: seen ? (pressed ? 0.88 : hovering ? 1.16 : 1) : 0.5,
+        className="rounded-full will-change-transform"
+        style={{
+          width: SIZE,
+          height: SIZE,
+          marginLeft: -HALF,
+          marginTop: -HALF,
+          background:
+            "radial-gradient(circle at 30% 32%, rgba(255, 153, 51, 0.95) 0%, rgba(255, 153, 51, 0.55) 24%, transparent 54%), radial-gradient(circle at 52% 46%, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.48) 25%, transparent 52%), radial-gradient(circle at 70% 68%, rgba(19, 136, 8, 0.92) 0%, rgba(19, 136, 8, 0.58) 26%, transparent 56%)",
+          filter: "blur(11px) saturate(1.12)",
         }}
-        transition={{ type: "spring", stiffness: 260, damping: 20 }}
-      >
-        <div className="relative">
-          {/* soft halo so the emblem stays legible over dense tables */}
-          <div
-            className="absolute rounded-full"
-            style={{
-              inset: -18,
-              background:
-                "radial-gradient(closest-side, var(--indelible-tint), transparent)",
-            }}
-          />
-          <motion.div
-            style={{ rotate: tilt }}
-            animate={{ y: [0, -9, 0] }}
-            transition={{
-              y: { repeat: Infinity, duration: 5.2, ease: "easeInOut" },
-              default: { type: "spring", stiffness: 170, damping: 22 },
-            }}
-          >
-            <DemocracyMark />
-          </motion.div>
-        </div>
-      </motion.div>
+        initial={false}
+        animate={{
+          opacity: isMoving ? 0.7 : 0,
+          scale: isMoving ? 1 : 0.72,
+        }}
+        transition={{
+          opacity: {
+            duration: isMoving ? 0.1 : 0.42,
+            ease: "easeOut",
+          },
+          scale: {
+            type: "spring",
+            stiffness: 300,
+            damping: 26,
+          },
+        }}
+      />
     </motion.div>
-  );
-}
-
-function DemocracyMark() {
-  return (
-    <svg
-      viewBox="0 0 200 200"
-      width={SIZE}
-      height={SIZE}
-      fill="none"
-      role="presentation"
-    >
-      {/* Ashoka Chakra — ever-turning wheel */}
-      <motion.g
-        stroke="var(--indelible)"
-        strokeWidth={2}
-        strokeLinecap="round"
-        style={{ transformBox: "fill-box", transformOrigin: "center" }}
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
-      >
-        <circle cx={CHAKRA.cx} cy={CHAKRA.cy} r={CHAKRA.r} />
-        {SPOKES.map((s, i) => (
-          <line key={i} x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2} strokeWidth={1.4} />
-        ))}
-        <circle cx={CHAKRA.cx} cy={CHAKRA.cy} r={3.2} fill="var(--indelible)" stroke="none" />
-      </motion.g>
-
-      {/* Parliament House — colonnade elevation */}
-      <g
-        stroke="var(--ink)"
-        strokeWidth={2.4}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        {/* dome + finial */}
-        <path d="M74 92a26 26 0 0 1 52 0" stroke="var(--indelible)" />
-        <path d="M85 92a15 15 0 0 1 30 0" stroke="var(--faint)" strokeWidth={1.6} />
-        <line x1={100} y1={66} x2={100} y2={59} />
-        <circle cx={100} cy={56} r={2.4} fill="var(--indelible)" stroke="none" />
-
-        {/* cornice */}
-        <ellipse cx={100} cy={95} rx={54} ry={9} />
-
-        {/* side walls */}
-        <line x1={46} y1={101} x2={46} y2={150} />
-        <line x1={154} y1={101} x2={154} y2={150} />
-
-        {/* pillars */}
-        <g stroke="var(--muted)" strokeWidth={2}>
-          {COLUMNS.map((c) => (
-            <line key={c} x1={c} y1={106} x2={c} y2={146} />
-          ))}
-        </g>
-
-        {/* central doorway */}
-        <path d="M93 146v-6a7 7 0 0 1 14 0v6" stroke="var(--muted)" strokeWidth={2} />
-
-        {/* plinth */}
-        <path d="M40 154q60 14 120 0" />
-      </g>
-
-      {/* steps */}
-      <g stroke="var(--faint)" strokeWidth={2} strokeLinecap="round">
-        <path d="M76 163q24 5.5 48 0" />
-        <path d="M62 171q38 7.5 76 0" />
-        <path d="M48 179q52 10 104 0" />
-      </g>
-    </svg>
   );
 }
