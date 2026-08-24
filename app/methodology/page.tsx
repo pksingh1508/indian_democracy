@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/src/components/ui";
 import { SITE } from "@/src/lib/site";
+import { Reveal, Stagger, StaggerItem } from "@/src/components/motion-primitives";
 
 export const metadata: Metadata = {
   title: "Methodology",
@@ -97,41 +98,45 @@ export default function MethodologyPage() {
         }
       />
 
-      <section className="mt-10 grid gap-8 sm:grid-cols-2">
+      <Stagger as="section" className="mt-10 grid gap-8 sm:grid-cols-2" stagger={0.07}>
         {PRINCIPLES.map((p) => (
-          <div key={p.title}>
+          <StaggerItem key={p.title}>
             <h2 className="font-display text-xl text-ink">{p.title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">{p.body}</p>
-          </div>
+          </StaggerItem>
         ))}
-      </section>
+      </Stagger>
 
-      <section className="mt-12 rounded-lg border border-rule bg-surface p-6">
-        <h2 className="font-display text-xl text-ink">Chamber visualizations</h2>
-        <p className="mt-2 text-sm leading-relaxed text-muted">
-          The Lok Sabha and Rajya Sabha seat views are{" "}
-          <strong>chamber-style composition views</strong>: they show party and
-          group totals arranged as a conceptual hemicycle generated from the same
-          computed totals as the tables. They do not represent physical seating
-          assignments, which no public source publishes at seat level. The
-          arithmetic is always shown explicitly — assigned seats plus named
-          vacancies must equal the sanctioned house size.
-        </p>
-      </section>
+      <Reveal className="mt-12">
+        <section className="rounded-lg border border-rule bg-surface p-6">
+          <h2 className="font-display text-xl text-ink">Chamber visualizations</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
+            The Lok Sabha and Rajya Sabha seat views are{" "}
+            <strong>chamber-style composition views</strong>: they show party and
+            group totals arranged as a conceptual hemicycle generated from the same
+            computed totals as the tables. They do not represent physical seating
+            assignments, which no public source publishes at seat level. The
+            arithmetic is always shown explicitly — assigned seats plus named
+            vacancies must equal the sanctioned house size.
+          </p>
+        </section>
+      </Reveal>
 
-      <section className="mt-8">
-        <h2 className="font-display text-xl text-ink">Recollection cadence</h2>
-        <p className="mt-2 text-sm leading-relaxed text-muted">
-          National datasets were collected on {SITE.collectedOn} using the
-          collection scripts kept alongside the datasets. When a new snapshot is
-          needed, the scripts are re-run against the official services, the diff
-          is reviewed, and the site is rebuilt. See{" "}
-          <Link href="/sources" className="text-link">
-            the source registry
-          </Link>{" "}
-          for every upstream publisher.
-        </p>
-      </section>
+      <Reveal className="mt-8">
+        <section>
+          <h2 className="font-display text-xl text-ink">Recollection cadence</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
+            National datasets were collected on {SITE.collectedOn} using the
+            collection scripts kept alongside the datasets. When a new snapshot is
+            needed, the scripts are re-run against the official services, the diff
+            is reviewed, and the site is rebuilt. See{" "}
+            <Link href="/sources" className="text-link">
+              the source registry
+            </Link>{" "}
+            for every upstream publisher.
+          </p>
+        </section>
+      </Reveal>
     </div>
   );
 }

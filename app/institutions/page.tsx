@@ -13,6 +13,7 @@ import {
   supremeCourtJudges,
 } from "@/src/lib/data/judiciary";
 import { lokSabha, rajyaSabha } from "@/src/lib/data/parliament";
+import { Reveal, Stagger, StaggerItem } from "@/src/components/motion-primitives";
 
 export const metadata: Metadata = {
   title: "Institutions",
@@ -154,13 +155,15 @@ export default function InstitutionsPage() {
       <div className="mt-10 space-y-12">
         {GROUPS.map((group) => (
           <section key={group.heading}>
-            <div className="mb-1 flex flex-wrap items-baseline justify-between gap-x-6">
-              <h2 className="font-display text-2xl text-ink">{group.heading}</h2>
-              <p className="font-mono text-[0.7rem] uppercase tracking-wide text-faint">
-                {group.note}
-              </p>
-            </div>
-            <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+            <Reveal y={14}>
+              <div className="mb-1 flex flex-wrap items-baseline justify-between gap-x-6">
+                <h2 className="font-display text-2xl text-ink">{group.heading}</h2>
+                <p className="font-mono text-[0.7rem] uppercase tracking-wide text-faint">
+                  {group.note}
+                </p>
+              </div>
+            </Reveal>
+            <Stagger as="ul" className="mt-4 grid gap-4 sm:grid-cols-2" stagger={0.07}>
               {group.items.map((item) => {
                 const inner = (
                   <>
@@ -175,7 +178,7 @@ export default function InstitutionsPage() {
                   </>
                 );
                 return (
-                  <li key={item.title} className="record-card p-5 transition-colors hover:border-rule-strong">
+                  <StaggerItem key={item.title} as="li" className="record-card p-5 transition-colors hover:border-rule-strong">
                     {item.href ? (
                       <Link href={item.href} className="block no-underline">
                         {inner}
@@ -183,10 +186,10 @@ export default function InstitutionsPage() {
                     ) : (
                       inner
                     )}
-                  </li>
+                  </StaggerItem>
                 );
               })}
-            </ul>
+            </Stagger>
           </section>
         ))}
       </div>

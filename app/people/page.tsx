@@ -6,6 +6,7 @@ import { StatusBadge } from "@/src/components/badges";
 import { councilOfMinisters, getConstitutionalOfficeholder } from "@/src/lib/data/executive";
 import { lokSabha, rajyaSabha } from "@/src/lib/data/parliament";
 import { supremeCourt } from "@/src/lib/data/judiciary";
+import { Reveal, Stagger, StaggerItem } from "@/src/components/motion-primitives";
 
 export const metadata: Metadata = {
   title: "People",
@@ -54,42 +55,44 @@ export default function PeopleIndexPage() {
         lede="Each person page is one official roster record — an office held, its jurisdiction, its dates, and its source. Records are never merged automatically across rosters by name similarity."
       />
 
-      <form action="/search" method="GET" className="mt-8 flex max-w-xl gap-2">
-        <label htmlFor="person-search" className="sr-only">
-          Search people, offices, constituencies, parties
-        </label>
-        <input
-          id="person-search"
-          type="search"
-          name="q"
-          placeholder="Search a name, constituency, party…"
-          className="input flex-1"
-        />
-        <button type="submit" className="button">Search</button>
-      </form>
+      <Reveal className="mt-8" y={14}>
+        <form action="/search" method="GET" className="flex max-w-xl gap-2">
+          <label htmlFor="person-search" className="sr-only">
+            Search people, offices, constituencies, parties
+          </label>
+          <input
+            id="person-search"
+            type="search"
+            name="q"
+            placeholder="Search a name, constituency, party…"
+            className="input flex-1"
+          />
+          <button type="submit" className="button">Search</button>
+        </form>
+      </Reveal>
 
       <section className="mt-12">
         <h2 className="font-display text-2xl text-ink">Constitutional officeholders</h2>
-        <ul className="mt-4 grid gap-4 sm:grid-cols-3">
+        <Stagger as="ul" className="mt-4 grid gap-4 sm:grid-cols-3" stagger={0.09}>
           {[president, vicePresident, primeMinister].map((o) =>
             o ? (
-              <li key={o.id} className="record-card p-5">
+              <StaggerItem key={o.id} as="li" className="record-card p-5">
                 <p className="eyebrow mb-1">{o.office.replace(" of India", "")}</p>
                 <Link href={`/institutions/${o.id === "prime-minister-of-india" ? "prime-minister" : o.id.replace("-of-india", "")}`} className="font-display text-lg text-indelible no-underline">
                   {o.name}
                 </Link>
                 <p className="mt-1 text-sm text-muted">{o.selectionMethod}</p>
-              </li>
+              </StaggerItem>
             ) : null,
           )}
-        </ul>
+        </Stagger>
       </section>
 
       <section className="mt-12">
         <h2 className="font-display text-2xl text-ink">Rosters</h2>
-        <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+        <Stagger as="ul" className="mt-4 grid gap-4 sm:grid-cols-2" stagger={0.08}>
           {ROSTERS.map((r) => (
-            <li key={r.href} className="record-card p-5 transition-colors hover:border-rule-strong">
+            <StaggerItem key={r.href} as="li" className="record-card p-5 transition-colors hover:border-rule-strong">
               <Link href={r.href} className="block no-underline">
                 <div className="flex items-baseline justify-between gap-3">
                   <h3 className="font-display text-lg text-indelible">{r.title}</h3>
@@ -97,20 +100,22 @@ export default function PeopleIndexPage() {
                 </div>
                 <p className="mt-1.5 text-sm leading-relaxed text-muted">{r.detail}</p>
               </Link>
-            </li>
+            </StaggerItem>
           ))}
-        </ul>
+        </Stagger>
       </section>
 
-      <aside className="mt-10 flex flex-wrap items-center gap-3 rounded-lg border border-rule bg-paper p-5 text-sm text-muted">
-        <StatusBadge tone="neutral">Identity policy</StatusBadge>
-        <span className="max-w-2xl leading-relaxed">
-          Where one natural person appears in multiple official rosters, each
-          record keeps its own page and citation. We do not merge identities by
-          name matching — see{" "}
-          <Link href="/methodology" className="text-link">methodology</Link>.
-        </span>
-      </aside>
+      <Reveal className="mt-10">
+        <aside className="flex flex-wrap items-center gap-3 rounded-lg border border-rule bg-paper p-5 text-sm text-muted">
+          <StatusBadge tone="neutral">Identity policy</StatusBadge>
+          <span className="max-w-2xl leading-relaxed">
+            Where one natural person appears in multiple official rosters, each
+            record keeps its own page and citation. We do not merge identities by
+            name matching — see{" "}
+            <Link href="/methodology" className="text-link">methodology</Link>.
+          </span>
+        </aside>
+      </Reveal>
     </div>
   );
 }

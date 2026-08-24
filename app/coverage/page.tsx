@@ -3,6 +3,7 @@ import { PageHeader } from "@/src/components/ui";
 import { StatusBadge } from "@/src/components/badges";
 import { coverageReport, describeCoverageStatus } from "@/src/lib/data/sources";
 import { SITE, formatSnapshotDate } from "@/src/lib/site";
+import { Reveal } from "@/src/components/motion-primitives";
 
 export const metadata: Metadata = {
   title: "Coverage report",
@@ -24,8 +25,9 @@ export default function CoveragePage() {
         }
       />
 
-      <div className="mt-8 overflow-x-auto rounded-lg border border-rule bg-surface">
-        <table className="data-table">
+      <Reveal className="mt-8">
+        <div className="overflow-x-auto rounded-lg border border-rule bg-surface">
+          <table className="data-table">
           <thead>
             <tr>
               <th scope="col">Area</th>
@@ -58,18 +60,21 @@ export default function CoveragePage() {
               );
             })}
           </tbody>
-        </table>
-      </div>
+          </table>
+        </div>
+      </Reveal>
 
-      <p className="mt-4 text-sm leading-relaxed text-muted">
-        Coverage expands only when a collection can be kept fresh. State
-        legislatures and district judicial officers require state-by-state
-        official source work and are deliberately not inferred from the national
-        datasets. A directory of every government employee is out of scope by
-        policy — see{" "}
-        <span className="font-mono text-xs">{SITE.name}</span>’s methodology for
-        the reasoning.
-      </p>
+      <Reveal className="mt-4" y={12}>
+        <p className="text-sm leading-relaxed text-muted">
+          Coverage expands only when a collection can be kept fresh. State
+          legislatures and district judicial officers require state-by-state
+          official source work and are deliberately not inferred from the national
+          datasets. A directory of every government employee is out of scope by
+          policy — see{" "}
+          <span className="font-mono text-xs">{SITE.name}</span>’s methodology for
+          the reasoning.
+        </p>
+      </Reveal>
     </div>
   );
 }

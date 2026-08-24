@@ -10,6 +10,7 @@ import {
   rosterSources,
 } from "@/src/lib/data/judiciary";
 import { formatIsoDate } from "@/src/lib/format";
+import { Reveal, Stagger, StaggerItem } from "@/src/components/motion-primitives";
 
 export const metadata: Metadata = {
   title: "High Courts",
@@ -35,11 +36,11 @@ export default function HighCourtsPage() {
         }
       />
 
-      <ul className="mt-10 grid gap-4 md:grid-cols-2">
+      <Stagger as="ul" className="mt-10 grid gap-4 md:grid-cols-2" stagger={0.035}>
         {highCourtJurisdictions.map((court) => {
           const baseline = getBaselineForCourt(court.id);
           return (
-            <li key={court.id} className="record-card p-5 transition-colors hover:border-rule-strong">
+            <StaggerItem key={court.id} as="li" className="record-card p-5 transition-colors hover:border-rule-strong">
               <div className="flex items-start justify-between gap-3">
                 <Link href={`/high-courts/${court.id}`} className="font-display text-lg text-indelible no-underline">
                   {court.name}
@@ -55,23 +56,25 @@ export default function HighCourtsPage() {
               <p className="mt-2 text-sm leading-relaxed text-muted">
                 Serves: {court.statesOrUnionTerritories.join(" · ")}
               </p>
-            </li>
+            </StaggerItem>
           );
         })}
-      </ul>
+      </Stagger>
 
-      <aside className="mt-10 rounded-lg border border-dashed border-rule-strong bg-paper p-5 text-sm leading-relaxed text-muted">
-        <strong className="text-ink">About the dated baseline.</strong>{" "}
-        The Department of Justice publishes consolidated judge-list PDFs — the
-        latest collected here is dated{" "}
-        {formatIsoDate(rosterSources.centralBaseline.asOn)} covering{" "}
-        {highCourtBaselineSummary.counts.highCourtsCovered} of{" "}
-        {highCourtBaselineSummary.counts.highCourtsInIndia} courts with{" "}
-        {highCourtBaselineSummary.counts.judges.toLocaleString("en-IN")} names.
-        Appointments, transfers, and retirements happen year-round, so these are
-        presented strictly as a baseline, never as a current sitting roster.
-        Each court page links its own official roster for verification.
-      </aside>
+      <Reveal className="mt-10">
+        <aside className="rounded-lg border border-dashed border-rule-strong bg-paper p-5 text-sm leading-relaxed text-muted">
+          <strong className="text-ink">About the dated baseline.</strong>{" "}
+          The Department of Justice publishes consolidated judge-list PDFs — the
+          latest collected here is dated{" "}
+          {formatIsoDate(rosterSources.centralBaseline.asOn)} covering{" "}
+          {highCourtBaselineSummary.counts.highCourtsCovered} of{" "}
+          {highCourtBaselineSummary.counts.highCourtsInIndia} courts with{" "}
+          {highCourtBaselineSummary.counts.judges.toLocaleString("en-IN")} names.
+          Appointments, transfers, and retirements happen year-round, so these are
+          presented strictly as a baseline, never as a current sitting roster.
+          Each court page links its own official roster for verification.
+        </aside>
+      </Reveal>
     </div>
   );
 }

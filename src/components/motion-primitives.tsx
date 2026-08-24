@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, type ReactNode } from "react";
 import {
   animate,
@@ -14,6 +15,25 @@ import { partyColor } from "@/src/lib/parties";
 
 /** Shared "premium" easing — fast start, long soft landing. */
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+/* ------------------------------------------------------------------ */
+/* RouteTransition — replays the site's entrance language per route.  */
+/* ------------------------------------------------------------------ */
+export function RouteTransition({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const reduce = useReducedMotion();
+
+  return (
+    <motion.div
+      key={pathname}
+      initial={reduce ? false : { opacity: 0, y: 14 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: EASE }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 /* ------------------------------------------------------------------ */
 /* Reveal — fades/rises into view. `load` animates on mount instead    */
@@ -283,11 +303,13 @@ export function AnimatedHemicycle({
 /* ------------------------------------------------------------------ */
 export function ScrollProgress() {
   const { scrollYProgress } = useScroll();
+  const reduce = useReducedMotion();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 140,
     damping: 28,
     restDelta: 0.001,
   });
+  if (reduce) return null;
   return (
     <motion.div
       aria-hidden

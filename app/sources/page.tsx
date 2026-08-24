@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/src/components/ui";
 import { sourceRegistry } from "@/src/lib/data/sources";
 import { formatIsoDate } from "@/src/lib/format";
+import { Reveal } from "@/src/components/motion-primitives";
 
 export const metadata: Metadata = {
   title: "Source registry",
@@ -18,8 +19,9 @@ export default function SourcesPage() {
         lede="Each dataset keeps its own source metadata. This registry lists the official publishers behind them, what they are used for, and how fresh each was at collection time."
       />
 
-      <div className="mt-8 overflow-x-auto rounded-lg border border-rule bg-surface">
-        <table className="data-table">
+      <Reveal className="mt-8">
+        <div className="overflow-x-auto rounded-lg border border-rule bg-surface">
+          <table className="data-table">
           <caption className="px-4 pt-4">
             All sources are official public services (authority Tier 1 unless noted).
           </caption>
@@ -54,16 +56,19 @@ export default function SourcesPage() {
               </tr>
             ))}
           </tbody>
-        </table>
-      </div>
+          </table>
+        </div>
+      </Reveal>
 
-      <p className="mt-4 text-sm leading-relaxed text-muted">
-        Authority tiers follow a simple order: gazettes and formal orders first,
-        then current rosters maintained by the responsible institution, then
-        official profiles and press releases. Reputable secondary reporting is
-        used only as a lead, never as the sole support for a current-office
-        claim — and never on this site’s collected datasets.
-      </p>
+      <Reveal className="mt-4" y={12}>
+        <p className="text-sm leading-relaxed text-muted">
+          Authority tiers follow a simple order: gazettes and formal orders first,
+          then current rosters maintained by the responsible institution, then
+          official profiles and press releases. Reputable secondary reporting is
+          used only as a lead, never as the sole support for a current-office
+          claim — and never on this site’s collected datasets.
+        </p>
+      </Reveal>
     </div>
   );
 }

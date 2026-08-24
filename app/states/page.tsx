@@ -13,6 +13,7 @@ import {
 } from "@/src/lib/data/parliament";
 import { normalizeStateName, slugify } from "@/src/lib/format";
 import { geography } from "@/src/lib/data/geography";
+import { Reveal, Stagger, StaggerItem } from "@/src/components/motion-primitives";
 
 export const metadata: Metadata = {
   title: "States & Union Territories",
@@ -55,8 +56,9 @@ export default function StatesPage() {
         lede={`All ${states.length} jurisdictions of the Indian Union — ${states.length - 8} states and 8 Union Territories — with their parliamentary representation, High Courts, and ${districtCount.toLocaleString("en-IN")} districts.`}
       />
 
-      <div className="mt-8 overflow-x-auto rounded-lg border border-rule bg-surface">
-        <table className="data-table">
+      <Reveal className="mt-8">
+        <div className="overflow-x-auto rounded-lg border border-rule bg-surface">
+          <table className="data-table">
           <caption className="px-4 pt-4">
             Codes are official LGD state codes. Seat counts are computed from the
             current member rosters.
@@ -87,26 +89,31 @@ export default function StatesPage() {
               </tr>
             ))}
           </tbody>
-        </table>
-      </div>
+          </table>
+        </div>
+      </Reveal>
 
-      <p className="mt-4 text-sm leading-relaxed text-muted">
-        State legislatures and state ministries are not part of the collected
-        record yet — see the{" "}
-        <Link href="/coverage" className="text-link">coverage report</Link>. Source:{" "}
-        {geography.source.publisher} ({geography.source.title}), snapshot{" "}
-        {geography.snapshotDate}.
-      </p>
+      <Reveal className="mt-4" y={12}>
+        <p className="text-sm leading-relaxed text-muted">
+          State legislatures and state ministries are not part of the collected
+          record yet — see the{" "}
+          <Link href="/coverage" className="text-link">coverage report</Link>. Source:{" "}
+          {geography.source.publisher} ({geography.source.title}), snapshot{" "}
+          {geography.snapshotDate}.
+        </p>
+      </Reveal>
 
-      <div className="mt-6 flex flex-wrap gap-2">
+      <Stagger className="mt-6 flex flex-wrap gap-2" stagger={0.07}>
         {["Complete geography", "Parliamentary rosters complete", "State executives not yet collected"].map(
           (label) => (
-            <StatusBadge key={label} tone={label.includes("not yet") ? "missing" : "ok"}>
-              {label}
-            </StatusBadge>
+            <StaggerItem key={label} y={8}>
+              <StatusBadge tone={label.includes("not yet") ? "missing" : "ok"}>
+                {label}
+              </StatusBadge>
+            </StaggerItem>
           ),
         )}
-      </div>
+      </Stagger>
     </div>
   );
 }

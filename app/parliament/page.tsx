@@ -10,6 +10,7 @@ import {
   rajyaSabhaPartyCounts,
 } from "@/src/lib/data/parliament";
 import { buildChamberBlocks } from "@/src/lib/chamber";
+import { Stagger, StaggerItem } from "@/src/components/motion-primitives";
 
 export const metadata: Metadata = {
   title: "Parliament",
@@ -70,31 +71,35 @@ export default function ParliamentPage() {
         }
       />
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
-        <ChamberCard
-          href="/parliament/lok-sabha"
-          name="Lok Sabha"
-          hindi="House of the People"
-          role={`Term ${lokSabha.house.term} · five-year house, dissolved for general elections`}
-          sitting={lokSabha.counts.sittingMembers}
-          vacancies={lokSabha.counts.officialVacancies}
-          sanctioned={lokSabha.house.sanctionedSeats}
-          topBlocks={lsBlocks.slice(0, 3).map((b) => `${b.shortLabel} ${b.count}`)}
-        />
-        <ChamberCard
-          href="/parliament/rajya-sabha"
-          name="Rajya Sabha"
-          hindi="Council of States"
-          role="Permanent house · one-third of members retire every two years"
-          sitting={rajyaSabha.counts.sittingMembers}
-          vacancies={rajyaSabha.counts.officialVacancies}
-          sanctioned={rajyaSabha.house.sanctionedSeats}
-          topBlocks={rsBlocks.slice(0, 3).map((b) => `${b.shortLabel} ${b.count}`)}
-        />
-      </div>
+      <Stagger className="mt-10 grid gap-6 md:grid-cols-2" stagger={0.12}>
+        <StaggerItem>
+          <ChamberCard
+            href="/parliament/lok-sabha"
+            name="Lok Sabha"
+            hindi="House of the People"
+            role={`Term ${lokSabha.house.term} · five-year house, dissolved for general elections`}
+            sitting={lokSabha.counts.sittingMembers}
+            vacancies={lokSabha.counts.officialVacancies}
+            sanctioned={lokSabha.house.sanctionedSeats}
+            topBlocks={lsBlocks.slice(0, 3).map((b) => `${b.shortLabel} ${b.count}`)}
+          />
+        </StaggerItem>
+        <StaggerItem>
+          <ChamberCard
+            href="/parliament/rajya-sabha"
+            name="Rajya Sabha"
+            hindi="Council of States"
+            role="Permanent house · one-third of members retire every two years"
+            sitting={rajyaSabha.counts.sittingMembers}
+            vacancies={rajyaSabha.counts.officialVacancies}
+            sanctioned={rajyaSabha.house.sanctionedSeats}
+            topBlocks={rsBlocks.slice(0, 3).map((b) => `${b.shortLabel} ${b.count}`)}
+          />
+        </StaggerItem>
+      </Stagger>
 
-      <section className="mt-14 grid gap-8 sm:grid-cols-2">
-        <div>
+      <Stagger as="section" className="mt-14 grid gap-8 sm:grid-cols-2" stagger={0.12}>
+        <StaggerItem>
           <h2 className="font-display text-xl text-ink">How the two Houses differ</h2>
           <table className="data-table mt-4">
             <thead>
@@ -127,8 +132,8 @@ export default function ParliamentPage() {
               </tr>
             </tbody>
           </table>
-        </div>
-        <div>
+        </StaggerItem>
+        <StaggerItem>
           <h2 className="font-display text-xl text-ink">Reading the composition views</h2>
           <p className="mt-4 text-sm leading-relaxed text-muted">
             Each chamber page shows the same computed snapshot three ways: an
@@ -142,8 +147,8 @@ export default function ParliamentPage() {
             publishes seating assignments, so the views are labelled{" "}
             <em>chamber-style composition views</em>.
           </p>
-        </div>
-      </section>
+        </StaggerItem>
+      </Stagger>
     </div>
   );
 }

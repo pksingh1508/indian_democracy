@@ -3,6 +3,7 @@ import { IBM_Plex_Mono, IBM_Plex_Sans, Poppins } from "next/font/google";
 import { SiteHeader } from "@/src/components/site-header";
 import { SiteFooter } from "@/src/components/site-footer";
 import { DemocracyCursor } from "@/src/components/democracy-cursor";
+import { RouteTransition, ScrollProgress } from "@/src/components/motion-primitives";
 import { SITE } from "@/src/lib/site";
 import "./globals.css";
 
@@ -48,10 +49,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a href="#main" className="skip-link">
           Skip to content
         </a>
+        <ScrollProgress />
         <DemocracyCursor />
         <SiteHeader />
         <main id="main" className="flex-1">
-          {children}
+          <RouteTransition>{children}</RouteTransition>
         </main>
         <SiteFooter />
       </body>

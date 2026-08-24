@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/src/components/breadcrumbs";
 import { PageHeader } from "@/src/components/ui";
 import { StatusBadge } from "@/src/components/badges";
 import { searchRecords, searchIndexSize } from "@/src/lib/search-index";
+import { Reveal, Stagger, StaggerItem } from "@/src/components/motion-primitives";
 
 export const metadata: Metadata = {
   title: "Search",
@@ -47,19 +48,21 @@ export default async function SearchPage(
         lede={`People, offices, constituencies, states, districts, parties, and courts — ${searchIndexSize().toLocaleString("en-IN")} indexed records from the official datasets.`}
       />
 
-      <form action="/search" method="GET" role="search" className="mt-8 flex gap-2">
-        <label htmlFor="q" className="sr-only">Search query</label>
-        <input
-          id="q"
-          type="search"
-          name="q"
-          defaultValue={rawQ}
-          placeholder='Try "Gandhinagar", "Nirmala", "Bombay High Court"…'
-          className="input flex-1"
-          autoFocus
-        />
-        <button type="submit" className="button">Search</button>
-      </form>
+      <Reveal className="mt-8" y={14}>
+        <form action="/search" method="GET" role="search" className="flex gap-2">
+          <label htmlFor="q" className="sr-only">Search query</label>
+          <input
+            id="q"
+            type="search"
+            name="q"
+            defaultValue={rawQ}
+            placeholder='Try "Gandhinagar", "Nirmala", "Bombay High Court"…'
+            className="input flex-1"
+            autoFocus
+          />
+          <button type="submit" className="button">Search</button>
+        </form>
+      </Reveal>
 
       {!rawQ && (
         <p className="mt-6 text-sm text-muted">
@@ -85,16 +88,16 @@ export default async function SearchPage(
             <h2 className="eyebrow !text-muted">{KIND_LABELS[kind] ?? kind}</h2>
             <span className="font-mono text-xs text-faint">{list.length}</span>
           </div>
-          <ul className="grid gap-2 sm:grid-cols-2">
+          <Stagger as="ul" className="grid gap-2 sm:grid-cols-2" stagger={0.035}>
             {list.map((r) => (
-              <li key={`${r.kind}-${r.href}-${r.title}`} className="record-card px-4 py-3 transition-colors hover:border-rule-strong">
+              <StaggerItem key={`${r.kind}-${r.href}-${r.title}`} as="li" className="record-card px-4 py-3 transition-colors hover:border-rule-strong" y={12}>
                 <Link href={r.href} className="block no-underline">
                   <span className="font-medium text-indelible">{r.title}</span>
                   <span className="mt-0.5 block text-sm text-muted">{r.subtitle}</span>
                 </Link>
-              </li>
+              </StaggerItem>
             ))}
-          </ul>
+          </Stagger>
         </section>
       ))}
 

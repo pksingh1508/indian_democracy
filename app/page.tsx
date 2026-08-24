@@ -4,7 +4,6 @@ import {
   AnimatedHemicycle,
   CtaLink,
   Reveal,
-  ScrollProgress,
   Stagger,
   StaggerItem,
 } from "@/src/components/motion-primitives";
@@ -78,8 +77,6 @@ export default function HomePage() {
 
   return (
     <>
-      <ScrollProgress />
-
       {/* Hero — interactive Lok Sabha chamber */}
       <LandingPage floor={floor} legend={legend} />
 
