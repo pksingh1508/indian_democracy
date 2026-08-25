@@ -75,12 +75,12 @@ export function DemocracyCursor() {
           marginLeft: -HALF,
           marginTop: -HALF,
           background:
-            "radial-gradient(circle at 30% 32%, rgba(255, 153, 51, 0.95) 0%, rgba(255, 153, 51, 0.55) 24%, transparent 54%), radial-gradient(circle at 52% 46%, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.48) 25%, transparent 52%), radial-gradient(circle at 70% 68%, rgba(19, 136, 8, 0.92) 0%, rgba(19, 136, 8, 0.58) 26%, transparent 56%)",
-          filter: "blur(11px) saturate(1.12)",
+            "radial-gradient(circle at 30% 32%, rgba(255, 140, 26, 1) 0%, rgba(255, 153, 51, 0.82) 28%, transparent 58%), radial-gradient(circle at 52% 46%, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 28%, transparent 56%), radial-gradient(circle at 70% 68%, rgba(16, 118, 5, 1) 0%, rgba(19, 136, 8, 0.85) 30%, transparent 60%)",
+          filter: "blur(6px) saturate(1.35)",
         }}
         initial={false}
         animate={{
-          opacity: isMoving ? 0.7 : 0,
+          opacity: isMoving ? 1 : 0,
           scale: isMoving ? 1 : 0.72,
         }}
         transition={{
