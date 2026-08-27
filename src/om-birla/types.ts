@@ -40,6 +40,49 @@ export type SocialInitiative = {
   citationIds: string[];
 };
 
+export type SalaryRecord = {
+  office: string;
+  period: string;
+  salary: string;
+  allowances: string;
+  totalApprox: string;
+  legalBasis: string;
+  notes?: string;
+  citationIds: string[];
+};
+
+export type NetWorthSnapshot = {
+  election: string; // e.g. "Lok Sabha 2024"
+  year: string;
+  totalAssets: string;
+  movable: string;
+  immovable: string;
+  liabilities: string;
+  cases: string;
+  incomeSelf?: string;
+  incomeSpouse?: string;
+  citationIds: string[];
+};
+
+export type WorkNewsItem = {
+  title: string;
+  date: string;
+  kind: "positive" | "mixed" | "critical";
+  summary: string;
+  sourceLabel: string;
+  citationId: string;
+};
+
+export type AllegationRecord = {
+  title: string;
+  date: string;
+  allegation: string;
+  context: string;
+  responseOrStatus: string;
+  outcome?: string;
+  citationIds: string[];
+};
+
 export type OmBirlaProfile = {
   id: string; // matches parliament id ls-4716
   slug: string;
@@ -76,6 +119,11 @@ export type OmBirlaProfile = {
     committeesAndRoles: string[];
     criticisms: string[];
   };
+  salaries: SalaryRecord[];
+  netWorthTimeline: NetWorthSnapshot[];
+  netWorthNotes: string[];
+  workHighlights: WorkNewsItem[];
+  allegations: AllegationRecord[];
   citations: Record<string, Citation>;
   lastVerified: string;
   disclaimer: string;
