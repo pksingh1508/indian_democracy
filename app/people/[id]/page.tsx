@@ -33,6 +33,7 @@ import {
   stripHonorific,
 } from "@/src/lib/format";
 import { OmBirlaProfile } from "@/src/om-birla";
+import { AmitShahProfile } from "@/src/amit-shah";
 
 const CONSTITUTIONAL_IDS = [
   "president-of-india",
@@ -392,26 +393,26 @@ export default async function PersonPage(props: PageProps<"/people/[id]">) {
               Name as published in the official roster: “{asPublished}”.
             </p>
           ) : null}
-          {id === "ls-4716" ? (
+          {(id === "ls-4716" || id === "ls-5021" || id === "union-minister-3") ? (
             <p className="rounded-md border border-leaf/30 bg-leaf/[0.06] px-3 py-2 text-xs leading-relaxed text-leaf">
               Enriched dossier below — a sourced birth-to-present record maintained in{" "}
-              <code className="rounded bg-white px-1 py-0.5 font-mono text-[0.7rem]">src/om-birla/</code>. All facts are citation-linked.
+              <code className="rounded bg-white px-1 py-0.5 font-mono text-[0.7rem]">{id === "ls-4716" ? "src/om-birla/" : "src/amit-shah/"}</code>. All facts are citation-linked.
             </p>
           ) : null}
           <p className="text-xs leading-relaxed text-muted">
-            This page records one public-office roster entry. {id === "ls-4716" ? "For this member an extended, sourced biography is provided below; still, the official roster remains the controlling source for current status." : "It does not claim to describe every office held by the same natural person — see the "}
-            {id !== "ls-4716" ? (
+            This page records one public-office roster entry. {(id === "ls-4716" || id === "ls-5021" || id === "union-minister-3") ? "For this member an extended, sourced biography is provided below; still, the official roster remains the controlling source for current status." : "It does not claim to describe every office held by the same natural person — see the "}
+            {(id !== "ls-4716" && id !== "ls-5021" && id !== "union-minister-3") ? (
               <Link href="/methodology" className="text-link !text-muted">
                 identity policy
               </Link>
             ) : null}
-            {id === "ls-4716" ? (
+            {(id === "ls-4716" || id === "ls-5021" || id === "union-minister-3") ? (
               <>
                 {" "}
                 See <Link href="/methodology" className="text-link !text-muted">methodology</Link>.
               </>
             ) : null}
-            {id !== "ls-4716" ? ". Dates of birth are not displayed by design." : " Birth details below are public-record facts with citations."}
+            {(id !== "ls-4716" && id !== "ls-5021" && id !== "union-minister-3") ? ". Dates of birth are not displayed by design." : " Birth details below are public-record facts with citations."}
           </p>
         </div>
       </div>
@@ -420,6 +421,12 @@ export default async function PersonPage(props: PageProps<"/people/[id]">) {
         <>
           <div className="my-12 h-px bg-gradient-to-r from-transparent via-rule-strong to-transparent" aria-hidden />
           <OmBirlaProfile />
+        </>
+      ) : null}
+      {(id === "ls-5021" || id === "union-minister-3") ? (
+        <>
+          <div className="my-12 h-px bg-gradient-to-r from-transparent via-rule-strong to-transparent" aria-hidden />
+          <AmitShahProfile />
         </>
       ) : null}
     </div>
